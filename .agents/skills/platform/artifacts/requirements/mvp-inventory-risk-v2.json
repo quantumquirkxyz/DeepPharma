@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "requirements-artifact",
+  "artifactId": "req-mvp-inventory-risk-20261126-v2",
+  "traceId": "trace-requirements-mvp-inventory-risk-20261126-v2",
+  "operationId": "op-requirements-mvp-inventory-risk-20261126-v2",
+  "status": "blocked",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md",
+    "docs/spec/mvp-inventory-risk.md",
+    "docs/engineering/refinement-baseline.md",
+    "docs/adr/ADR-057-formula-consumo-cobertura.md",
+    "docs/adr/ADR-058-slos-iniciales-mvp.md",
+    "docs/adr/ADR-059-estados-minimos-de-dominio.md"
+  ],
+  "sourceDigests": {
+    "spec": "sha256:061d85286a214cb6b9b01703fa5c856dc543c3450c5a5d3f21046a849e567b65",
+    "baseline": "sha256:b061fa40cfa2c7b26303213390c23a87985f32eac9537bca8a55967fc753cdc6",
+    "formula": "sha256:939602f02000a4920df977c364778fc7162befcb2cc5fc3f988a1073a3c29e3c",
+    "slos": "sha256:fa2ddf962d1536fd8e233a6dc50ab3a7c60c5b7d70426a07b29a2e94a0e74b79",
+    "domain-states": "sha256:675788c9dc9f0e945d48d0cb4d6db49077e2cedd5ad5ca76db33951b07fb0098"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26-v2",
+    "scope": "MVP inventory and operational-risk baseline",
+    "dryRun": true
+  },
+  "producer": "requirements-engineering",
+  "owner": "project-owner",
+  "nextConsumer": "architecture-artifact",
+  "evidence": [
+    {
+      "kind": "decision",
+      "ref": "ADR-057",
+      "status": "accepted"
+    },
+    {
+      "kind": "decision",
+      "ref": "ADR-058",
+      "status": "accepted-for-benchmark"
+    },
+    {
+      "kind": "decision",
+      "ref": "ADR-059",
+      "status": "accepted"
+    }
+  ],
+  "approvals": [
+    {
+      "status": "not-approved",
+      "authority": "project-owner",
+      "reason": "Benchmark evidence and formal baseline approval are still pending."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "REQ-B05",
+      "decision": "remediate concurrent inventory-read p95 above the 500 ms objective and rerun the approved benchmark",
+      "owner": "operations-owner"
+    },
+    {
+      "id": "REQ-B06",
+      "decision": "approve the complete immutable requirements baseline",
+      "owner": "project-owner"
+    }
+  ],
+  "risks": [
+    {
+      "id": "REQ-R02",
+      "statement": "The initial SLO values are evaluation thresholds, not production guarantees."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "requirements": [
+      {
+        "id": "REQ-DOM-001",
+        "statement": "The system calculates coverage using the 30-day valid-consumption window.",
+        "status": "ready",
+        "owner": "project-owner",
+        "verification": "automated domain tests and benchmark evidence"
+      }
+    ],
+    "taxonomyApplicability": {
+      "functional": true,
+      "performance": true,
+      "security": true,
+      "privacy": true,
+      "ai/model": true
+    },
+    "sources": [],
+    "decisions": [
+      "ADR-057",
+      "ADR-058",
+      "ADR-059"
+    ],
+    "qualityChecks": {
+      "status": "blocked",
+      "reason": "Benchmark and approval gates remain open."
+    },
+    "acceptanceCriteria": [],
+    "gherkin": [],
+    "traceability": [
+      {
+        "ref": "docs/requirements/acceptance-traceability-mvp.md",
+        "criteria": "AC-01..AC-14",
+        "status": "consolidated-partial-execution"
+      }
+    ],
+    "baseline": {
+      "status": "not-approved"
+    },
+    "changeImpact": [],
+    "nonGoals": [
+      "No clinical prediction claim",
+      "No real SALMI integration",
+      "No production SLO claim"
+    ],
+    "risks": [],
+    "residualUnknowns": [
+      "benchmark evidence",
+      "baseline approval"
+    ]
+  }
+}

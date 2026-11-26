@@ -1,0 +1,14 @@
+{
+  "operationId": "op-labels-deeppharma-mvp-20261126",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "families": {
+    "workflow": ["status:triage", "status:needs-info", "status:blocked", "status:ready", "status:in-progress", "status:review", "status:done", "status:out-of-scope"],
+    "workType": ["type:feature", "type:bug", "type:architecture", "type:documentation", "type:spec", "type:sub-spec", "type:research", "type:maintenance", "type:security"],
+    "discipline": ["area:requirements", "area:architecture", "area:implementation", "area:testing", "area:quality", "area:operations", "area:observability", "area:security", "area:documentation", "area:skills-platform"],
+    "priority": ["priority:critical", "priority:high", "priority:medium", "priority:low"],
+    "risk": ["risk:critical", "risk:high", "risk:medium", "risk:low", "risk:unknown"]
+  },
+  "status": "completed",
+  "remoteLabelCountObserved": 46,
+  "canonicalLabelsVerified": true
+}

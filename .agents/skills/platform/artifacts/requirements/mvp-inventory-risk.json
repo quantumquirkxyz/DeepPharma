@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "requirements-artifact",
+  "artifactId": "req-mvp-inventory-risk-20261126",
+  "traceId": "trace-requirements-mvp-inventory-risk-20261126",
+  "operationId": "op-requirements-mvp-inventory-risk-20261126",
+  "status": "blocked",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md",
+    "docs/spec/mvp-inventory-risk.md",
+    "docs/engineering/refinement-baseline.md"
+  ],
+  "sourceDigests": {
+    "CONTEXT.md": "sha256:abb9dcebcde586336e4477ba31a2c9dc7f8a680227070c5f3d868b77f72316c4",
+    "constitution": "sha256:12b9d66fd013959f407f23cfdb1ab507eee433fba80a87014589175a3afd47e8",
+    "spec": "sha256:c5a5e40787ae5acf05f4c69cefbdf6aad05a889fdec2368b34ff47f70330e013",
+    "baseline": "sha256:818e7c039bae697dcc8fdc9a786926824f1d74352983baa9b80618b865b2ad22"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26",
+    "scope": "MVP inventory and operational-risk baseline",
+    "dryRun": true
+  },
+  "producer": "requirements-engineering",
+  "owner": "project-owner",
+  "nextConsumer": "architecture-artifact",
+  "evidence": [
+    {
+      "kind": "quality-gate",
+      "status": "blocked",
+      "ref": "docs/engineering/refinement-baseline.md"
+    }
+  ],
+  "approvals": [
+    {
+      "status": "not-approved",
+      "authority": "project-owner",
+      "reason": "Open NEEDS CLARIFICATION decisions remain."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "REQ-B01",
+      "decision": "formula of consumption and coverage horizon",
+      "owner": "product-owner"
+    },
+    {
+      "id": "REQ-B02",
+      "decision": "domain state model alignment",
+      "owner": "technical-owner"
+    },
+    {
+      "id": "REQ-B03",
+      "decision": "measurable performance and availability targets",
+      "owner": "operations-owner"
+    },
+    {
+      "id": "REQ-B04",
+      "decision": "Project visibility versus public repository state",
+      "owner": "project-owner"
+    }
+  ],
+  "risks": [
+    {
+      "id": "REQ-R01",
+      "statement": "Ticketing from this artifact would encode unapproved assumptions."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "requirements": [],
+    "taxonomyApplicability": {},
+    "sources": [],
+    "decisions": [],
+    "qualityChecks": {
+      "status": "blocked"
+    },
+    "acceptanceCriteria": [],
+    "gherkin": [],
+    "traceability": [],
+    "baseline": {
+      "status": "not-approved"
+    },
+    "changeImpact": [],
+    "nonGoals": [
+      "No GitHub publication",
+      "No implementation"
+    ],
+    "risks": [],
+    "residualUnknowns": [
+      "REQ-B01",
+      "REQ-B02",
+      "REQ-B03",
+      "REQ-B04"
+    ]
+  }
+}

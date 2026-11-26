@@ -1,0 +1,125 @@
+{
+  "operationId": "op-auto-refine-mvp-inventory-risk-20261126-r3",
+  "parentOperationId": "op-grill-mvp-inventory-risk-20261125",
+  "status": "blocked",
+  "provenance": {
+    "inputDigest": "sha256:blocked-requirements-and-architecture",
+    "sourceDigests": [
+      "sha256:blocked-requirements-artifact",
+      "sha256:blocked-architecture-artifact",
+      "sha256:818e7c039bae697dcc8fdc9a786926824f1d74352983baa9b80618b865b2ad22"
+    ],
+    "producer": "automatic-refinement",
+    "createdAt": "2026-11-26T00:00:00Z",
+    "parentArtifactRef": "artifact://grill-with-docs/mvp-inventory-risk"
+  },
+  "invocationTrace": [
+    {
+      "invocationId": "inv-auto-refine-r3",
+      "skill": "automatic-refinement",
+      "status": "blocked",
+      "inputDigest": "sha256:blocked-requirements-and-architecture",
+      "outputDigest": null,
+      "routingConfidence": 0.96,
+      "evidenceRefs": [
+        "artifact://requirements/mvp-inventory-risk-20261126",
+        "artifact://architecture/mvp-inventory-risk-20261126"
+      ]
+    }
+  ],
+  "skillsInvoked": [
+    "automatic-refinement",
+    "requirements-engineering",
+    "spec-driven-development"
+  ],
+  "routing": {
+    "confidence": 0.96,
+    "selectedCapabilities": [
+      "requirements-quality",
+      "architecture-handoff",
+      "baseline-gating"
+    ],
+    "unresolvedRoutes": [
+      "approval cannot be inferred from blocked artifacts"
+    ]
+  },
+  "budgetSpent": {
+    "iterations": 1,
+    "subagents": 0,
+    "skillInvocations": 3,
+    "sources": 3,
+    "wallTimeMs": 0
+  },
+  "loop": {
+    "loopId": "loop-auto-refine-mvp-inventory-risk-20261126-r3",
+    "ledgerRef": "ledger://automatic-refinement/op-auto-refine-mvp-inventory-risk-20261126-r3",
+    "recoveryPolicy": "Resolve named decisions, obtain approvals, then rerun from the same fixed point.",
+    "progressEvidence": [
+      "Blocked requirements and architecture artifacts were emitted with explicit owners.",
+      "Project dry-run was completed without mutation."
+    ],
+    "status": "blocker-escalated"
+  },
+  "agentStatuses": [],
+  "handoffs": [
+    {
+      "handoffId": "handoff-auto-refine-r3",
+      "traceId": "trace-auto-refine-mvp-inventory-risk-20261126-r3",
+      "runId": "run-auto-refine-mvp-inventory-risk-20261126-r3",
+      "inputDigests": [
+        "sha256:blocked-requirements-artifact",
+        "sha256:blocked-architecture-artifact"
+      ],
+      "outputDigest": null,
+      "signature": "blocked-no-approval",
+      "status": "blocked",
+      "nextOwner": "project-owner",
+      "artifactRef": "artifact://requirements/mvp-inventory-risk-20261126"
+    }
+  ],
+  "evidence": [
+    "RequirementsArtifact is schema-shaped but blocked.",
+    "ArchitectureArtifact is schema-shaped but blocked.",
+    "Tracker dry-run completed without mutation."
+  ],
+  "decisions": [
+    "Do not emit refined-awaiting-review from blocked upstream artifacts.",
+    "Do not publish the Project, Milestones, Specs or Tickets."
+  ],
+  "assumptions": [
+    "The documented owners are available to resolve the listed decisions."
+  ],
+  "risks": [
+    "Proceeding would encode unapproved domain and operational assumptions."
+  ],
+  "openQuestions": [
+    "Consumption formula and coverage horizon",
+    "Domain state model",
+    "Measurable SLO targets",
+    "Project visibility versus repository visibility"
+  ],
+  "proposedArtifacts": [
+    "Approved RequirementsArtifact",
+    "Approved ArchitectureArtifact",
+    "RefinementArtifact with refined-awaiting-review status"
+  ],
+  "verification": {
+    "status": "blocked",
+    "independent": false,
+    "evidenceRefs": [
+      "artifact://requirements/mvp-inventory-risk-20261126",
+      "artifact://architecture/mvp-inventory-risk-20261126"
+    ],
+    "verdict": {
+      "result": "BLOCKED",
+      "reason": "Upstream artifacts are not approved."
+    }
+  },
+  "limitations": [
+    "No remote mutation was performed.",
+    "No approval was inferred.",
+    "No implementation was started."
+  ],
+  "approvalStatus": "not-approved",
+  "nextConsumer": "project-owner"
+}

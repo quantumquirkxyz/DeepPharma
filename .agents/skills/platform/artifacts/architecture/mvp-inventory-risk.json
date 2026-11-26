@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "architecture-artifact",
+  "artifactId": "arch-mvp-inventory-risk-20261126",
+  "traceId": "trace-architecture-mvp-inventory-risk-20261126",
+  "operationId": "op-architecture-mvp-inventory-risk-20261126",
+  "status": "blocked",
+  "sourceArtifacts": [
+    "docs/spec/plan-mvp-inventory-risk.md",
+    "docs/spec/constitution.md",
+    "artifact://requirements/mvp-inventory-risk-20261126"
+  ],
+  "sourceDigests": {
+    "plan": "sha256:16e9d502090f54bd298517d3e810c7dce6bfd856284303ac1e2e8b2e0c817ef2",
+    "constitution": "sha256:12b9d66fd013959f407f23cfdb1ab507eee433fba80a87014589175a3afd47e8",
+    "requirements": "sha256:blocked-requirements-artifact"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26",
+    "scope": "MVP architecture and validation seams",
+    "dryRun": true
+  },
+  "producer": "architecture-design",
+  "owner": "technical-owner",
+  "nextConsumer": "to-spec",
+  "evidence": [
+    {
+      "kind": "architecture-plan",
+      "ref": "docs/spec/plan-mvp-inventory-risk.md"
+    }
+  ],
+  "approvals": [
+    {
+      "status": "not-approved",
+      "authority": "technical-owner",
+      "reason": "RequirementsArtifact is blocked and domain states are unresolved."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "ARCH-B01",
+      "statement": "Cannot baseline domain states until requirements decision REQ-B02 is resolved."
+    },
+    {
+      "id": "ARCH-B02",
+      "statement": "Cannot baseline performance seams until REQ-B03 has measurable targets."
+    }
+  ],
+  "risks": [
+    {
+      "id": "ARCH-R01",
+      "statement": "Publishing architecture now could freeze incompatible model assumptions."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "architecture": {
+      "style": "modular monolith with layered boundaries",
+      "seams": [
+        "DatasetValidator",
+        "InventoryImportService",
+        "RiskEvaluator",
+        "ExperimentRunner",
+        "TemporalEvaluator",
+        "ExternalInventorySource"
+      ]
+    },
+    "validationStrategy": "blocked pending approved requirements and measurable SLOs",
+    "traceability": [],
+    "residualUnknowns": [
+      "domain state model",
+      "performance targets"
+    ]
+  }
+}

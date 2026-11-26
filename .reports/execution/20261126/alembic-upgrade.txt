@@ -1,0 +1,90 @@
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 001_initial_schema, initial inventory schema
+Traceback (most recent call last):
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2000, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table medicamentos already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/config.py", line 1039, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/config.py", line 1029, in main
+    self.run_cmd(cfg, options)
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/config.py", line 963, in run_cmd
+    fn(
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/command.py", line 487, in upgrade
+    script.run_env()
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/script/base.py", line 550, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 114, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 132, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/migrations/env.py", line 47, in <module>
+    run_migrations_online()
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/migrations/env.py", line 41, in run_migrations_online
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/runtime/environment.py", line 970, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/runtime/migration.py", line 616, in run_migrations
+    step.migration_fn(**kw)
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/migrations/versions/001_initial_schema.py", line 18, in upgrade
+    op.create_table(
+  File "<string>", line 8, in create_table
+  File "<string>", line 3, in create_table
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/operations/ops.py", line 1323, in create_table
+    return operations.invoke(op)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/operations/base.py", line 448, in invoke
+    return fn(self, operation)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/operations/toimpl.py", line 139, in create_table
+    operations.impl.create_table(table, **kw)
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 434, in create_table
+    self._exec(schema.CreateTable(table, **kw))
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 252, in _exec
+    return conn.execute(construct, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1464, in execute
+    return meth(
+           ^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 188, in _execute_on_connection
+    return connection._execute_ddl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1575, in _execute_ddl
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1891, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2019, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2381, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2000, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table medicamentos already exists
+[SQL:
+CREATE TABLE medicamentos (
+	id INTEGER NOT NULL,
+	nombre VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)

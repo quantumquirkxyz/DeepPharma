@@ -1,0 +1,34 @@
+{
+  "operationId": "op-make-project-deeppharma-mvp-20261126",
+  "owner": "quantumquirkxyz",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "title": "DeepPharma — MVP",
+  "visibility": "private",
+  "scope": {
+    "views": [
+      "Board Delivery",
+      "Table Traceability",
+      "Table Blocked/Triage"
+    ],
+    "milestones": [
+      "M0 — Baseline y gobierno",
+      "M1 — Datos e inventario",
+      "M2 — Riesgo ML y fallback",
+      "M3 — Alertas, auditoría y notificaciones",
+      "M4 — Seguridad, operación y verificación"
+    ],
+    "repositoryLink": "quantumquirkxyz/DeepPharma"
+  },
+  "approval": {
+    "remoteEffect": "authorized in conversation",
+    "governanceException": "docs/adr/ADR-060-excepcion-gobernada-refinement.md"
+  },
+  "status": "completed",
+  "remote": {
+    "projectNumber": 31,
+    "projectId": "PVT_kwHOB2Vrws4BtX6H",
+    "url": "https://github.com/users/quantumquirkxyz/projects/31",
+    "repositoryLinked": true,
+    "visibility": "private"
+  }
+}

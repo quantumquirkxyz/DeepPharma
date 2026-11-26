@@ -1,0 +1,40 @@
+{
+  "artifactType": "SetupQuirkSkillsArtifact",
+  "operationId": "setup-quirk-skills-deeppharma-v1",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "provider": {
+    "name": "github",
+    "repository": "quantumquirkxyz/DeepPharma",
+    "remote": "https://github.com/quantumquirkxyz/DeepPharma.git",
+    "capabilities": ["issues", "comments", "labels", "pull_requests"],
+    "permissions": "Repository identity confirmed; gh authentication and label mutation permissions verified."
+  },
+  "approval": {
+    "evidence": "User approved the proposed configuration and selected root AGENTS.md.",
+    "scope": "Repository configuration and approved GitHub label reconciliation."
+  },
+  "layout": {
+    "type": "single-context",
+    "context": "CONTEXT.md",
+    "adrs": "docs/adr/"
+  },
+  "generatedProjections": [
+    "AGENTS.md",
+    "docs/reference/agents/issue-tracker.md",
+    "docs/reference/agents/triage-labels.md",
+    "docs/reference/agents/domain.md"
+  ],
+  "idempotency": {
+    "result": "reconciled",
+    "reconciliationKey": "setup-quirk-skills-deeppharma-v1",
+    "rerunBehavior": "Reconcile the same files and update the managed Agent skills block without duplicating content."
+  },
+  "rollback": {
+    "plan": "Remove the four generated projection files and the managed Agent skills block from AGENTS.md; preserve pre-existing content.",
+    "evidence": "All generated paths are listed above and no pre-existing root AGENTS.md was present."
+  },
+  "validation": {
+    "status": "pending",
+    "notes": "Generated paths validated; gh authentication verified; 28 approved namespaced labels reconciled."
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "architecture-artifact",
+  "artifactId": "arch-mvp-inventory-risk-20261126-final",
+  "traceId": "trace-architecture-mvp-inventory-risk-20261126-final",
+  "operationId": "op-architecture-mvp-inventory-risk-20261126-final",
+  "status": "approved",
+  "sourceArtifacts": [
+    "docs/spec/plan-mvp-inventory-risk.md",
+    "artifact://requirements/req-mvp-inventory-risk-20261126-final"
+  ],
+  "sourceDigests": {
+    "plan": "sha256:504bb215bbde27c03a2e0127336e410a46bbec5b25771ca4f342508548a35ce7",
+    "requirements": "sha256:521102ebc6e5a23de1ad464f670404aa04455890f9d181dcaab8b5a1465bf207"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26-final",
+    "scope": "MVP architecture and validation seams",
+    "dryRun": false
+  },
+  "producer": "architecture-design",
+  "owner": "technical-owner",
+  "nextConsumer": "to-spec",
+  "evidence": [
+    {
+      "kind": "architecture-plan",
+      "ref": "docs/spec/plan-mvp-inventory-risk.md",
+      "status": "approved-for-planning"
+    },
+    {
+      "kind": "benchmark",
+      "ref": ".reports/execution/20261126/benchmark-approved-http-final.txt",
+      "status": "local-evaluation-only",
+      "limitations": [
+        "loopback",
+        "temporary SQLite",
+        "single host",
+        "not production assurance"
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "status": "approved",
+      "authority": "technical-owner",
+      "evidence": "Explicit authorization in conversation on 2026-11-26",
+      "timestamp": "2026-11-26T00:00:00Z"
+    }
+  ],
+  "blockers": [],
+  "risks": [
+    {
+      "id": "ARCH-R03",
+      "statement": "Architecture is approved for planning only; implementation gaps require tickets and verification."
+    },
+    {
+      "id": "ARCH-R04",
+      "statement": "Local benchmark is not production assurance."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "architecture": {
+      "style": "modular monolith with layered boundaries",
+      "seams": [
+        "DatasetValidator",
+        "InventoryImportService",
+        "RiskEvaluator",
+        "ExperimentRunner",
+        "TemporalEvaluator",
+        "ExternalInventorySource"
+      ]
+    },
+    "validationStrategy": "API tests, migration validation, acceptance traceability and approved local HTTP benchmark; residual implementation gaps remain ticketed.",
+    "traceability": [
+      {
+        "criterion": "AC-01..AC-04",
+        "seams": [
+          "DatasetValidator",
+          "InventoryImportService"
+        ],
+        "evidence": "docs/requirements/acceptance-traceability-mvp.md"
+      },
+      {
+        "criterion": "AC-05..AC-07",
+        "seams": [
+          "RiskEvaluator",
+          "ExperimentRunner",
+          "TemporalEvaluator"
+        ],
+        "evidence": "docs/requirements/acceptance-traceability-mvp.md"
+      },
+      {
+        "criterion": "AC-08..AC-10",
+        "seams": [
+          "alert management API",
+          "audit history"
+        ],
+        "evidence": "docs/requirements/acceptance-traceability-mvp.md"
+      },
+      {
+        "criterion": "AC-11..AC-14",
+        "seams": [
+          "ExternalInventorySource",
+          "notification adapter"
+        ],
+        "evidence": "docs/requirements/acceptance-traceability-mvp.md"
+      }
+    ],
+    "residualUnknowns": [
+      {
+        "id": "ARCH-U01",
+        "statement": "Jobs and scheduler are deferred MVP seams; no worker is claimed implemented."
+      },
+      {
+        "id": "ARCH-U02",
+        "statement": "Authorization by institutional scope requires implementation evidence."
+      },
+      {
+        "id": "ARCH-U03",
+        "statement": "Retention and restricted-data controls require implementation evidence."
+      },
+      {
+        "id": "ARCH-U04",
+        "statement": "Production capacity remains outside local benchmark evidence."
+      }
+    ]
+  }
+}

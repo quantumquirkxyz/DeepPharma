@@ -1,0 +1,236 @@
+[
+  {
+    "ticket": 25,
+    "subSpec": 7,
+    "title": "Ticket: Implement artifact provenance validation",
+    "labels": [
+      "status:ready",
+      "type:maintenance",
+      "area:quality",
+      "priority:high",
+      "risk:medium"
+    ],
+    "milestone": "M0 — Baseline y gobierno"
+  },
+  {
+    "ticket": 26,
+    "subSpec": 8,
+    "title": "Ticket: Implement canonical tracker metadata validator",
+    "labels": [
+      "status:blocked",
+      "type:maintenance",
+      "area:requirements",
+      "priority:high",
+      "risk:medium"
+    ],
+    "milestone": "M0 — Baseline y gobierno"
+  },
+  {
+    "ticket": 27,
+    "subSpec": 9,
+    "title": "Ticket: Record manual refinement exception handoff",
+    "labels": [
+      "status:blocked",
+      "type:documentation",
+      "area:requirements",
+      "priority:medium",
+      "risk:high"
+    ],
+    "milestone": "M0 — Baseline y gobierno"
+  },
+  {
+    "ticket": 28,
+    "subSpec": 10,
+    "title": "Ticket: Implement dataset validation vertical slice",
+    "labels": [
+      "status:ready",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:high"
+    ],
+    "milestone": "M1 — Datos e inventario"
+  },
+  {
+    "ticket": 29,
+    "subSpec": 11,
+    "title": "Ticket: Implement safe dataset application",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:high"
+    ],
+    "milestone": "M1 — Datos e inventario"
+  },
+  {
+    "ticket": 30,
+    "subSpec": 12,
+    "title": "Ticket: Implement inventory state and coverage",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:medium"
+    ],
+    "milestone": "M1 — Datos e inventario"
+  },
+  {
+    "ticket": 31,
+    "subSpec": 13,
+    "title": "Ticket: Implement versioned risk evaluation contract",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M2 — Riesgo ML y fallback"
+  },
+  {
+    "ticket": 32,
+    "subSpec": 14,
+    "title": "Ticket: Implement reproducible temporal experiment",
+    "labels": [
+      "status:blocked",
+      "type:research",
+      "area:testing",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M2 — Riesgo ML y fallback"
+  },
+  {
+    "ticket": 33,
+    "subSpec": 15,
+    "title": "Ticket: Implement deterministic fallback lineage",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M2 — Riesgo ML y fallback"
+  },
+  {
+    "ticket": 34,
+    "subSpec": 16,
+    "title": "Ticket: Implement drift and explanation controls",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:quality",
+      "priority:medium",
+      "risk:high"
+    ],
+    "milestone": "M2 — Riesgo ML y fallback"
+  },
+  {
+    "ticket": 35,
+    "subSpec": 17,
+    "title": "Ticket: Implement alert state machine",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:implementation",
+      "priority:high",
+      "risk:high"
+    ],
+    "milestone": "M3 — Alertas, auditoría y notificaciones"
+  },
+  {
+    "ticket": 36,
+    "subSpec": 18,
+    "title": "Ticket: Implement audit authorization and integrity",
+    "labels": [
+      "status:blocked",
+      "type:security",
+      "area:security",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M3 — Alertas, auditoría y notificaciones"
+  },
+  {
+    "ticket": 37,
+    "subSpec": 19,
+    "title": "Ticket: Implement simulated notifications and retry",
+    "labels": [
+      "status:blocked",
+      "type:feature",
+      "area:operations",
+      "priority:medium",
+      "risk:high"
+    ],
+    "milestone": "M3 — Alertas, auditoría y notificaciones"
+  },
+  {
+    "ticket": 38,
+    "subSpec": 20,
+    "title": "Ticket: Implement RBAC and scope enforcement",
+    "labels": [
+      "status:blocked",
+      "type:security",
+      "area:security",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M4 — Seguridad, operación y verificación"
+  },
+  {
+    "ticket": 39,
+    "subSpec": 21,
+    "title": "Ticket: Implement data protection and retention controls",
+    "labels": [
+      "status:blocked",
+      "type:security",
+      "area:security",
+      "priority:high",
+      "risk:critical"
+    ],
+    "milestone": "M4 — Seguridad, operación y verificación"
+  },
+  {
+    "ticket": 40,
+    "subSpec": 22,
+    "title": "Ticket: Implement migration rollback and kill switch",
+    "labels": [
+      "status:blocked",
+      "type:maintenance",
+      "area:operations",
+      "priority:high",
+      "risk:high"
+    ],
+    "milestone": "M4 — Seguridad, operación y verificación"
+  },
+  {
+    "ticket": 41,
+    "subSpec": 23,
+    "title": "Ticket: Implement observability and performance evidence",
+    "labels": [
+      "status:blocked",
+      "type:research",
+      "area:observability",
+      "priority:high",
+      "risk:medium"
+    ],
+    "milestone": "M4 — Seguridad, operación y verificación"
+  },
+  {
+    "ticket": 42,
+    "subSpec": 24,
+    "title": "Ticket: Run final verification and release gate",
+    "labels": [
+      "status:blocked",
+      "type:maintenance",
+      "area:quality",
+      "priority:high",
+      "risk:high"
+    ],
+    "milestone": "M4 — Seguridad, operación y verificación"
+  }
+]

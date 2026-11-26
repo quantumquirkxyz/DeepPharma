@@ -1,0 +1,95 @@
+{
+  "operationId": "op-auto-refine-mvp-inventory-risk-20261126-r4",
+  "parentOperationId": "op-grill-mvp-inventory-risk-20261125",
+  "status": "blocked",
+  "provenance": {
+    "inputDigest": "sha256:approved-requirements-and-architecture",
+    "sourceDigests": [
+      "sha256:superseded-requirements-artifact",
+      "sha256:superseded-architecture-artifact"
+    ],
+    "producer": "automatic-refinement",
+    "createdAt": "2026-11-26T00:00:00Z",
+    "parentArtifactRef": "artifact://grill-with-docs/mvp-inventory-risk"
+  },
+  "invocationTrace": [
+    {
+      "invocationId": "inv-auto-refine-r4",
+      "skill": "automatic-refinement",
+      "status": "blocked",
+      "inputDigest": "sha256:approved-requirements-and-architecture",
+      "outputDigest": null,
+      "routingConfidence": 0.99,
+      "evidenceRefs": ["evidence://runtime/missing-agent-leasing"]
+    }
+  ],
+  "skillsInvoked": ["automatic-refinement", "graph-skill-routing"],
+  "routing": {
+    "confidence": 0.99,
+    "selectedCapabilities": ["critic", "independent-verifier"],
+    "unresolvedRoutes": ["host runtime does not expose isolated agent leasing"]
+  },
+  "budgetSpent": {
+    "iterations": 0,
+    "subagents": 0,
+    "skillInvocations": 2,
+    "sources": 2,
+    "wallTimeMs": 0
+  },
+  "loop": {
+    "loopId": "loop-auto-refine-mvp-inventory-risk-20261126-r4",
+    "ledgerRef": "ledger://automatic-refinement/op-auto-refine-mvp-inventory-risk-20261126-r4",
+    "recoveryPolicy": "Rerun only when the host provides critic and verifier leasing.",
+    "progressEvidence": ["Approved SDD artifacts are present."],
+    "status": "blocker-escalated"
+  },
+  "agentStatuses": [
+    {
+      "agentId": "critic",
+      "capabilities": ["critic"],
+      "status": "unavailable",
+      "reason": "No isolated agent runtime exposed."
+    },
+    {
+      "agentId": "independent-verifier",
+      "capabilities": ["independent-verification"],
+      "status": "unavailable",
+      "reason": "No isolated agent runtime exposed."
+    }
+  ],
+  "handoffs": [],
+  "evidence": [
+    "Approved requirements and architecture artifacts exist.",
+    "The automatic-refinement runtime boundary explicitly requires host leasing."
+  ],
+  "decisions": [
+    "Do not simulate critic or verifier results.",
+    "Do not emit refined-awaiting-review."
+  ],
+  "assumptions": [],
+  "risks": [
+    {
+      "id": "REF-R01",
+      "statement": "Proceeding without independent verification would violate the refinement contract."
+    }
+  ],
+  "openQuestions": [
+    "When will the host provide isolated critic and verifier capabilities?"
+  ],
+  "proposedArtifacts": ["RefinementArtifact after runtime availability"],
+  "verification": {
+    "status": "blocked",
+    "independent": false,
+    "evidenceRefs": ["evidence://runtime/missing-agent-leasing"],
+    "verdict": {
+      "result": "BLOCKED",
+      "reason": "Required runtime capability is unavailable."
+    }
+  },
+  "limitations": [
+    "No remote effects performed.",
+    "No critic or verifier was simulated."
+  ],
+  "approvalStatus": "not-approved",
+  "nextConsumer": "host-runtime-owner"
+}

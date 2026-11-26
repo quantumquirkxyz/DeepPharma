@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "requirements-artifact",
+  "artifactId": "req-mvp-inventory-risk-20261126-approved",
+  "traceId": "trace-requirements-mvp-inventory-risk-20261126-approved",
+  "operationId": "op-requirements-mvp-inventory-risk-20261126-approved",
+  "status": "superseded",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md",
+    "docs/spec/mvp-inventory-risk.md",
+    "docs/engineering/refinement-baseline.md",
+    "docs/quality/evidence-register.md",
+    "docs/adr/ADR-057-formula-consumo-cobertura.md",
+    "docs/adr/ADR-058-slos-iniciales-mvp.md",
+    "docs/adr/ADR-059-estados-minimos-de-dominio.md"
+  ],
+  "sourceDigests": {
+    "spec": "sha256:061d85286a214cb6b9b01703fa5c856dc543c3450c5a5d3f21046a849e567b65",
+    "plan": "sha256:16e9d502090f54bd298517d3e810c7dce6bfd856284303ac1e2e8b2e0c817ef2",
+    "baseline": "sha256:3d2ff185e669617784e69a11d7ca60e9e8d3487ebe73bb03176f9d85ad947bd5",
+    "evidence": "sha256:49bdc1b09cba58ad4ccef57b763e2aaad5ab5ea7c842b94876ec0807b649de8e",
+    "benchmark": "sha256:ec0db70e3bfae659e265d778cea58732797fff50c7ca6651c1daa40e859dbb63"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26",
+    "scope": "MVP inventory and operational-risk baseline",
+    "dryRun": false
+  },
+  "producer": "requirements-engineering",
+  "owner": "project-owner",
+  "nextConsumer": "architecture-artifact",
+  "evidence": [
+    {
+      "kind": "benchmark",
+      "status": "passed-evaluation-thresholds",
+      "ref": ".reports/execution/20261126/benchmark-approved-http-final.txt"
+    },
+    {
+      "kind": "decision",
+      "status": "accepted",
+      "refs": ["ADR-057", "ADR-058", "ADR-059"]
+    }
+  ],
+  "approvals": [
+    {
+      "status": "rejected",
+      "authority": "project-owner",
+      "evidence": "Superseded after independent verification found incomplete traceability and contradictory repository approval state.",
+      "timestamp": "2026-11-26T00:00:00Z"
+    }
+  ],
+  "blockers": [],
+  "risks": [
+    {
+      "id": "REQ-R03",
+      "statement": "Benchmark evidence is local evaluation evidence, not production assurance."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "requirements": [
+      {
+        "id": "REQ-DOM-001",
+        "statement": "The system calculates coverage using the valid-consumption window defined by ADR-057.",
+        "class": "functional",
+        "priority": "high",
+        "owner": "project-owner",
+        "status": "blocked",
+        "sourceRefs": ["ADR-057"],
+        "verification": "domain tests and API integration tests",
+        "acceptanceRefs": ["AC-05", "AC-06"],
+        "consumerRefs": ["architecture-artifact"],
+        "revision": 1
+      }
+    ],
+    "taxonomyApplicability": {
+      "functional": true,
+      "performance": true,
+      "security": true,
+      "privacy": true,
+      "ai/model": true
+    },
+    "sources": [],
+    "decisions": ["ADR-057", "ADR-058", "ADR-059"],
+    "qualityChecks": {
+      "status": "blocked",
+      "method": "29148-inspired quality review"
+    },
+    "acceptanceCriteria": [],
+    "gherkin": [],
+    "traceability": [],
+    "baseline": {
+      "status": "superseded",
+      "approvalEvidence": "superseded-by-independent-verification"
+    },
+    "changeImpact": [],
+    "nonGoals": [
+      "No clinical prediction claim",
+      "No real SALMI integration",
+      "No production SLO claim"
+    ],
+    "risks": [],
+    "residualUnknowns": [
+      "Production deployment performance remains outside this evaluation baseline."
+    ]
+  }
+}

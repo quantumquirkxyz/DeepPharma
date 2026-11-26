@@ -1,0 +1,995 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "requirements-artifact",
+  "artifactId": "req-mvp-inventory-risk-20261126-final",
+  "traceId": "trace-requirements-mvp-inventory-risk-20261126-final",
+  "operationId": "op-requirements-mvp-inventory-risk-20261126-final",
+  "status": "approved",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md",
+    "docs/spec/mvp-inventory-risk.md",
+    "docs/spec/plan-mvp-inventory-risk.md",
+    "docs/engineering/refinement-baseline.md",
+    "docs/requirements/requirements-review.md",
+    "docs/requirements/acceptance-traceability-mvp.md"
+  ],
+  "sourceDigests": {
+    "spec": "sha256:cec52a6f481b772c4da45ad38541ae08771d59d98bc9762bc2107957cecfd038",
+    "plan": "sha256:504bb215bbde27c03a2e0127336e410a46bbec5b25771ca4f342508548a35ce7",
+    "baseline": "sha256:b983bffd1b30bb35bdd129b3e7d8d9149abcdaa822e7faa5ade8682be305a416",
+    "requirements-review": "sha256:e65d83664dcfa62da40b0d133bb64eff7dc2d76a8977734db92fde78a73f43bc",
+    "traceability": "sha256:b9a2568f5c403b98bcd504f96b7bc9d0500c0f9576cfd721dd440ffeffb9bdec",
+    "architecture-review": "sha256:db6992548da434e0f5ba2606e9e86f7021287668667b71be458dad9d9f922c82",
+    "benchmark": "sha256:ec0db70e3bfae659e265d778cea58732797fff50c7ca6651c1daa40e859dbb63"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26-final",
+    "scope": "MVP inventory and operational-risk baseline",
+    "dryRun": false
+  },
+  "producer": "requirements-engineering",
+  "owner": "project-owner",
+  "nextConsumer": "to-spec",
+  "evidence": [
+    {
+      "kind": "decision",
+      "ref": "ADR-057",
+      "status": "accepted"
+    },
+    {
+      "kind": "decision",
+      "ref": "ADR-058",
+      "status": "accepted-for-benchmark"
+    },
+    {
+      "kind": "decision",
+      "ref": "ADR-059",
+      "status": "accepted"
+    }
+  ],
+  "approvals": [
+    {
+      "status": "approved",
+      "authority": "project-owner",
+      "evidence": "Explicit authorization in conversation on 2026-11-26",
+      "timestamp": "2026-11-26T00:00:00Z"
+    }
+  ],
+  "blockers": [],
+  "risks": [
+    {
+      "id": "REQ-R04",
+      "statement": "Criteria marked partial or not-executed are future implementation and verification work, not compliance evidence."
+    },
+    {
+      "id": "REQ-R05",
+      "statement": "Local benchmark evidence is bounded to the documented evaluation environment and is not production assurance."
+    },
+    {
+      "id": "REQ-R06",
+      "statement": "Partial criteria remain residual uncertainty and must not be consumed as verified evidence."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "requirements": [
+      {
+        "id": "REQ-DOM-001",
+        "statement": "The system calculates coverage using the 30-day valid-consumption window.",
+        "status": "ready",
+        "owner": "project-owner",
+        "verification": "automated domain tests and benchmark evidence"
+      }
+    ],
+    "taxonomyApplicability": {
+      "functional": true,
+      "performance": true,
+      "security": true,
+      "privacy": true,
+      "ai/model": true
+    },
+    "sources": [],
+    "decisions": [
+      "ADR-057",
+      "ADR-058",
+      "ADR-059"
+    ],
+    "qualityChecks": {
+      "status": "passed-with-residual-verification",
+      "method": "29148-inspired quality review"
+    },
+    "acceptanceCriteria": [
+      {
+        "id": "AC-01",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "schema and types are validated",
+        "expected": "schema and types are validated",
+        "status": "partial",
+        "owner": "administrator",
+        "executedEvidence": "test_dataset_validation_persists_valid_source",
+        "plannedVerification": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-02",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "unknown references, duplicates and invalid quantities are reported",
+        "expected": "unknown references, duplicates and invalid quantities are reported",
+        "status": "partial",
+        "owner": "administrator",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory",
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "id": "AC-03",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "a rejected load leaves current inventory unchanged",
+        "expected": "a rejected load leaves current inventory unchanged",
+        "status": "executed",
+        "owner": "administrator",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory",
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "id": "AC-04",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "source, version and dataset state are persisted",
+        "expected": "source, version and dataset state are persisted",
+        "status": "partial",
+        "owner": "administrator",
+        "executedEvidence": "test_dataset_validation_persists_valid_source",
+        "plannedVerification": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-05",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "a versioned model or deterministic fallback evaluates risk",
+        "expected": "a versioned model or deterministic fallback evaluates risk",
+        "status": "partial",
+        "owner": "pharmacist",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "risk output includes level, probability, horizon, model and dataset limitations",
+        "expected": "risk output includes level, probability, horizon, model and dataset limitations",
+        "status": "partial",
+        "owner": "pharmacist",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06a",
+        "actor": "ml-engineer",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "temporal partitions and evaluation metrics are recorded",
+        "expected": "temporal partitions and evaluation metrics are recorded",
+        "status": "not-executed",
+        "owner": "ml-engineer",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-017 and future experiment tests"
+      },
+      {
+        "id": "AC-06b",
+        "actor": "ml-engineer",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "fallback is recorded as FALLBACK_DETERMINISTA with cause and version",
+        "expected": "fallback is recorded as FALLBACK_DETERMINISTA with cause and version",
+        "status": "partial",
+        "owner": "ml-engineer",
+        "executedEvidence": "ADR-024 and fallback tests",
+        "plannedVerification": "ADR-024 and fallback tests"
+      },
+      {
+        "id": "AC-06c",
+        "actor": "ml-engineer",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "result lineage and non-silent recalculation are persisted",
+        "expected": "result lineage and non-silent recalculation are persisted",
+        "status": "not-executed",
+        "owner": "ml-engineer",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-025 and lineage tests"
+      },
+      {
+        "id": "AC-06d",
+        "actor": "ml-engineer",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "quality and drift monitoring compares against a reference",
+        "expected": "quality and drift monitoring compares against a reference",
+        "status": "not-executed",
+        "owner": "ml-engineer",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-026 and monitoring tests"
+      },
+      {
+        "id": "AC-06e",
+        "actor": "ml-engineer",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "approved results provide operational explanation without causal claims",
+        "expected": "approved results provide operational explanation without causal claims",
+        "status": "not-executed",
+        "owner": "ml-engineer",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-028 and explanation tests"
+      },
+      {
+        "id": "AC-06f",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "human review is required before irreversible actions",
+        "expected": "human review is required before irreversible actions",
+        "status": "not-executed",
+        "owner": "pharmacist",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-029 and authorization-action tests"
+      },
+      {
+        "id": "AC-06g",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "domain and human decision events are append-only and auditable",
+        "expected": "domain and human decision events are append-only and auditable",
+        "status": "partial",
+        "owner": "administrator",
+        "executedEvidence": "ADR-030 and alert history tests",
+        "plannedVerification": "ADR-030 and alert history tests"
+      },
+      {
+        "id": "AC-06h",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "audit queries enforce role and scope and record rejection",
+        "expected": "audit queries enforce role and scope and record rejection",
+        "status": "partial",
+        "owner": "administrator",
+        "executedEvidence": "ADR-031 and authorization tests",
+        "plannedVerification": "ADR-031 and authorization tests"
+      },
+      {
+        "id": "AC-06i",
+        "actor": "administrator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "authorized kill switch applies a safe fallback and records the action",
+        "expected": "authorized kill switch applies a safe fallback and records the action",
+        "status": "not-executed",
+        "owner": "administrator",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-035 and kill-switch tests"
+      },
+      {
+        "id": "AC-07",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "reevaluation does not duplicate active alerts",
+        "expected": "reevaluation does not duplicate active alerts",
+        "status": "executed",
+        "owner": "pharmacist",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-08",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "only authorized roles change alert state",
+        "expected": "only authorized roles change alert state",
+        "status": "partial",
+        "owner": "pharmacist",
+        "executedEvidence": "test_token_scopes_follow_user_role",
+        "plannedVerification": "test_token_scopes_follow_user_role"
+      },
+      {
+        "id": "AC-09",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "each transition records actor, previous state, new state and comment",
+        "expected": "each transition records actor, previous state, new state and comment",
+        "status": "executed",
+        "owner": "pharmacist",
+        "executedEvidence": "alert history assertions in risk integration test",
+        "plannedVerification": "alert history assertions in risk integration test"
+      },
+      {
+        "id": "AC-10",
+        "actor": "pharmacist",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "terminal alerts cannot be modified",
+        "expected": "terminal alerts cannot be modified",
+        "status": "not-executed",
+        "owner": "pharmacist",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-018 and terminal-state tests"
+      },
+      {
+        "id": "AC-11",
+        "actor": "operator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "simulated external source implements the integration port",
+        "expected": "simulated external source implements the integration port",
+        "status": "not-executed",
+        "owner": "operator",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and adapter tests"
+      },
+      {
+        "id": "AC-12",
+        "actor": "operator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "source failures do not silently mutate inventory",
+        "expected": "source failures do not silently mutate inventory",
+        "status": "not-executed",
+        "owner": "operator",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and failure integration tests"
+      },
+      {
+        "id": "AC-13",
+        "actor": "operator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "synchronization records source, result and error",
+        "expected": "synchronization records source, result and error",
+        "status": "not-executed",
+        "owner": "operator",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and synchronization tests"
+      },
+      {
+        "id": "AC-14",
+        "actor": "operator",
+        "precondition": "MVP baseline and relevant authorization are available",
+        "action": "simulated notifications record attempt, result, error and retry",
+        "expected": "simulated notifications record attempt, result, error and retry",
+        "status": "not-executed",
+        "owner": "operator",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-019 and notification tests"
+      }
+    ],
+    "gherkin": [
+      {
+        "id": "AC-01",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "schema and types are validated",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_dataset_validation_persists_valid_source",
+        "plannedVerification": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-02",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "unknown references, duplicates and invalid quantities are reported",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory",
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "id": "AC-03",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "a rejected load leaves current inventory unchanged",
+        "then": "the expected behavior is observable and recorded",
+        "status": "executed",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory",
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "id": "AC-04",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "source, version and dataset state are persisted",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_dataset_validation_persists_valid_source",
+        "plannedVerification": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-05",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "a versioned model or deterministic fallback evaluates risk",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "risk output includes level, probability, horizon, model and dataset limitations",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06a",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "temporal partitions and evaluation metrics are recorded",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-017 and future experiment tests"
+      },
+      {
+        "id": "AC-06b",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "fallback is recorded as FALLBACK_DETERMINISTA with cause and version",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "ADR-024 and fallback tests",
+        "plannedVerification": "ADR-024 and fallback tests"
+      },
+      {
+        "id": "AC-06c",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "result lineage and non-silent recalculation are persisted",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-025 and lineage tests"
+      },
+      {
+        "id": "AC-06d",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "quality and drift monitoring compares against a reference",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-026 and monitoring tests"
+      },
+      {
+        "id": "AC-06e",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "approved results provide operational explanation without causal claims",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-028 and explanation tests"
+      },
+      {
+        "id": "AC-06f",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "human review is required before irreversible actions",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-029 and authorization-action tests"
+      },
+      {
+        "id": "AC-06g",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "domain and human decision events are append-only and auditable",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "ADR-030 and alert history tests",
+        "plannedVerification": "ADR-030 and alert history tests"
+      },
+      {
+        "id": "AC-06h",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "audit queries enforce role and scope and record rejection",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "ADR-031 and authorization tests",
+        "plannedVerification": "ADR-031 and authorization tests"
+      },
+      {
+        "id": "AC-06i",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "authorized kill switch applies a safe fallback and records the action",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-035 and kill-switch tests"
+      },
+      {
+        "id": "AC-07",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "reevaluation does not duplicate active alerts",
+        "then": "the expected behavior is observable and recorded",
+        "status": "executed",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-08",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "only authorized roles change alert state",
+        "then": "the expected behavior is observable and recorded",
+        "status": "partial",
+        "executedEvidence": "test_token_scopes_follow_user_role",
+        "plannedVerification": "test_token_scopes_follow_user_role"
+      },
+      {
+        "id": "AC-09",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "each transition records actor, previous state, new state and comment",
+        "then": "the expected behavior is observable and recorded",
+        "status": "executed",
+        "executedEvidence": "alert history assertions in risk integration test",
+        "plannedVerification": "alert history assertions in risk integration test"
+      },
+      {
+        "id": "AC-10",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "terminal alerts cannot be modified",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-018 and terminal-state tests"
+      },
+      {
+        "id": "AC-11",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "simulated external source implements the integration port",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and adapter tests"
+      },
+      {
+        "id": "AC-12",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "source failures do not silently mutate inventory",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and failure integration tests"
+      },
+      {
+        "id": "AC-13",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "synchronization records source, result and error",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-004 and synchronization tests"
+      },
+      {
+        "id": "AC-14",
+        "given": "the MVP is configured with the required data and authorization",
+        "when": "simulated notifications record attempt, result, error and retry",
+        "then": "the expected behavior is observable and recorded",
+        "status": "not-executed",
+        "executedEvidence": null,
+        "plannedVerification": "ADR-019 and notification tests"
+      }
+    ],
+    "traceability": [
+      {
+        "criterion": "AC-01",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_dataset_validation_persists_valid_source",
+        "executedEvidence": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "criterion": "AC-02",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "criterion": "AC-03",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "criterion": "AC-04",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_dataset_validation_persists_valid_source",
+        "executedEvidence": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "criterion": "AC-05",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "criterion": "AC-06",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "criterion": "AC-06a",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-017 and future experiment tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-06b",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-024 and fallback tests",
+        "executedEvidence": "ADR-024 and fallback tests"
+      },
+      {
+        "criterion": "AC-06c",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-025 and lineage tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-06d",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-026 and monitoring tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-06e",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-028 and explanation tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-06f",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-029 and authorization-action tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-06g",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-030 and alert history tests",
+        "executedEvidence": "ADR-030 and alert history tests"
+      },
+      {
+        "criterion": "AC-06h",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-031 and authorization tests",
+        "executedEvidence": "ADR-031 and authorization tests"
+      },
+      {
+        "criterion": "AC-06i",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-035 and kill-switch tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-07",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "criterion": "AC-08",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "partial",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "test_token_scopes_follow_user_role",
+        "executedEvidence": "test_token_scopes_follow_user_role"
+      },
+      {
+        "criterion": "AC-09",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "alert history assertions in risk integration test",
+        "executedEvidence": "alert history assertions in risk integration test"
+      },
+      {
+        "criterion": "AC-10",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-018 and terminal-state tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-11",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-004 and adapter tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-12",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-004 and failure integration tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-13",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-004 and synchronization tests",
+        "executedEvidence": null
+      },
+      {
+        "criterion": "AC-14",
+        "source": "docs/spec/mvp-inventory-risk.md",
+        "status": "not-executed",
+        "consumerRefs": [
+          "to-spec",
+          "to-tickets"
+        ],
+        "plannedVerification": "ADR-019 and notification tests",
+        "executedEvidence": null
+      }
+    ],
+    "baseline": {
+      "status": "approved",
+      "approvalEvidence": "conversation-2026-11-26"
+    },
+    "changeImpact": [],
+    "nonGoals": [
+      "No clinical prediction claim",
+      "No real SALMI integration",
+      "No production SLO claim"
+    ],
+    "risks": [],
+    "residualUnknowns": [
+      {
+        "id": "AC-01",
+        "statement": "schema and types are validated",
+        "owner": "administrator",
+        "status": "partial",
+        "plannedVerification": "test_dataset_validation_persists_valid_source",
+        "executedEvidence": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-02",
+        "statement": "unknown references, duplicates and invalid quantities are reported",
+        "owner": "administrator",
+        "status": "partial",
+        "plannedVerification": "test_invalid_dataset_does_not_change_inventory",
+        "executedEvidence": "test_invalid_dataset_does_not_change_inventory"
+      },
+      {
+        "id": "AC-04",
+        "statement": "source, version and dataset state are persisted",
+        "owner": "administrator",
+        "status": "partial",
+        "plannedVerification": "test_dataset_validation_persists_valid_source",
+        "executedEvidence": "test_dataset_validation_persists_valid_source"
+      },
+      {
+        "id": "AC-05",
+        "statement": "a versioned model or deterministic fallback evaluates risk",
+        "owner": "pharmacist",
+        "status": "partial",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06",
+        "statement": "risk output includes level, probability, horizon, model and dataset limitations",
+        "owner": "pharmacist",
+        "status": "partial",
+        "plannedVerification": "test_risk_evaluation_creates_prediction_and_critical_alert",
+        "executedEvidence": "test_risk_evaluation_creates_prediction_and_critical_alert"
+      },
+      {
+        "id": "AC-06a",
+        "statement": "temporal partitions and evaluation metrics are recorded",
+        "owner": "ml-engineer",
+        "status": "not-executed",
+        "plannedVerification": "ADR-017 and future experiment tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-06b",
+        "statement": "fallback is recorded as FALLBACK_DETERMINISTA with cause and version",
+        "owner": "ml-engineer",
+        "status": "partial",
+        "plannedVerification": "ADR-024 and fallback tests",
+        "executedEvidence": "ADR-024 and fallback tests"
+      },
+      {
+        "id": "AC-06c",
+        "statement": "result lineage and non-silent recalculation are persisted",
+        "owner": "ml-engineer",
+        "status": "not-executed",
+        "plannedVerification": "ADR-025 and lineage tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-06d",
+        "statement": "quality and drift monitoring compares against a reference",
+        "owner": "ml-engineer",
+        "status": "not-executed",
+        "plannedVerification": "ADR-026 and monitoring tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-06e",
+        "statement": "approved results provide operational explanation without causal claims",
+        "owner": "ml-engineer",
+        "status": "not-executed",
+        "plannedVerification": "ADR-028 and explanation tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-06f",
+        "statement": "human review is required before irreversible actions",
+        "owner": "pharmacist",
+        "status": "not-executed",
+        "plannedVerification": "ADR-029 and authorization-action tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-06g",
+        "statement": "domain and human decision events are append-only and auditable",
+        "owner": "administrator",
+        "status": "partial",
+        "plannedVerification": "ADR-030 and alert history tests",
+        "executedEvidence": "ADR-030 and alert history tests"
+      },
+      {
+        "id": "AC-06h",
+        "statement": "audit queries enforce role and scope and record rejection",
+        "owner": "administrator",
+        "status": "partial",
+        "plannedVerification": "ADR-031 and authorization tests",
+        "executedEvidence": "ADR-031 and authorization tests"
+      },
+      {
+        "id": "AC-06i",
+        "statement": "authorized kill switch applies a safe fallback and records the action",
+        "owner": "administrator",
+        "status": "not-executed",
+        "plannedVerification": "ADR-035 and kill-switch tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-08",
+        "statement": "only authorized roles change alert state",
+        "owner": "pharmacist",
+        "status": "partial",
+        "plannedVerification": "test_token_scopes_follow_user_role",
+        "executedEvidence": "test_token_scopes_follow_user_role"
+      },
+      {
+        "id": "AC-10",
+        "statement": "terminal alerts cannot be modified",
+        "owner": "pharmacist",
+        "status": "not-executed",
+        "plannedVerification": "ADR-018 and terminal-state tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-11",
+        "statement": "simulated external source implements the integration port",
+        "owner": "operator",
+        "status": "not-executed",
+        "plannedVerification": "ADR-004 and adapter tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-12",
+        "statement": "source failures do not silently mutate inventory",
+        "owner": "operator",
+        "status": "not-executed",
+        "plannedVerification": "ADR-004 and failure integration tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-13",
+        "statement": "synchronization records source, result and error",
+        "owner": "operator",
+        "status": "not-executed",
+        "plannedVerification": "ADR-004 and synchronization tests",
+        "executedEvidence": null
+      },
+      {
+        "id": "AC-14",
+        "statement": "simulated notifications record attempt, result, error and retry",
+        "owner": "operator",
+        "status": "not-executed",
+        "plannedVerification": "ADR-019 and notification tests",
+        "executedEvidence": null
+      }
+    ]
+  }
+}

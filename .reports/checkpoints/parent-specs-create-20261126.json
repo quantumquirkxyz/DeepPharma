@@ -1,0 +1,14 @@
+{
+  "operationId": "op-parent-specs-deeppharma-mvp-20261126",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "projectNumber": 31,
+  "issues": [
+    {"number": 2, "title": "Parent Spec: M0 — Baseline and Governance", "milestone": "M0 — Baseline y gobierno"},
+    {"number": 3, "title": "Parent Spec: M1 — Data and Inventory", "milestone": "M1 — Datos e inventario"},
+    {"number": 4, "title": "Parent Spec: M2 — Risk ML and Fallback", "milestone": "M2 — Riesgo ML y fallback"},
+    {"number": 5, "title": "Parent Spec: M3 — Alerts, Audit and Notifications", "milestone": "M3 — Alertas, auditoría y notificaciones"},
+    {"number": 6, "title": "Parent Spec: M4 — Security, Operations and Verification", "milestone": "M4 — Seguridad, operación y verificación"}
+  ],
+  "labels": ["status:triage", "type:spec", "area:requirements", "priority:*", "risk:*"],
+  "status": "created-parent-specs-only"
+}

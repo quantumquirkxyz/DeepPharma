@@ -1,0 +1,24 @@
+{
+  "operationId": "op-milestones-deeppharma-mvp-20261126",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "projectNumber": 31,
+  "milestones": [
+    {"title": "M0 — Baseline y gobierno", "description": "Approved planning baseline, governance, traceability and tracker controls."},
+    {"title": "M1 — Datos e inventario", "description": "Validated datasets, inventory state and safe import vertical slice."},
+    {"title": "M2 — Riesgo ML y fallback", "description": "Versioned risk evaluation, reproducibility and deterministic fallback."},
+    {"title": "M3 — Alertas, auditoría y notificaciones", "description": "Auditable alert lifecycle and simulated notifications."},
+    {"title": "M4 — Seguridad, operación y verificación", "description": "Authorization, operations, quality evidence and release verification."}
+  ],
+  "approval": {
+    "remoteEffect": "authorized in conversation",
+    "governanceException": "docs/adr/ADR-060-excepcion-gobernada-refinement.md"
+  },
+  "status": "completed",
+  "remoteMilestones": [
+    {"number": 1, "title": "M0 — Baseline y gobierno"},
+    {"number": 3, "title": "M1 — Datos e inventario"},
+    {"number": 2, "title": "M2 — Riesgo ML y fallback"},
+    {"number": 4, "title": "M3 — Alertas, auditoría y notificaciones"},
+    {"number": 5, "title": "M4 — Seguridad, operación y verificación"}
+  ]
+}

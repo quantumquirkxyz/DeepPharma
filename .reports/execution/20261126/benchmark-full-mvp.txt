@@ -1,0 +1,17 @@
+/home/quantumquirkxyz/DeepPharma/apps/api/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+environment=TestClient + in-memory SQLite, local process
+dataset_rows=1000
+validation_requests=10
+validation_statuses=[200]
+validation_p50_ms=37.294
+validation_p95_ms=63.605
+validation_throughput_rows_per_second=20257.621
+inventory_read_requests=100
+inventory_read_statuses=[200]
+inventory_read_p50_ms=9.539
+inventory_read_p95_ms=13.717
+inventory_read_throughput_requests_per_second=99.587
+availability_window_success_rate=1.000
+status=partial-evidence
+limitations=local in-memory SQLite and TestClient; no production-like environment, network, concurrency, or sustained availability window

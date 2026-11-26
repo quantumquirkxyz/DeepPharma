@@ -1,0 +1,8 @@
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 001_initial_schema, initial inventory schema
+INFO  [alembic.runtime.migration] Running upgrade 001_initial_schema -> 002_inventory_history, add inventory history
+INFO  [alembic.runtime.migration] Running upgrade 002_inventory_history -> 003_users, add users
+INFO  [alembic.runtime.migration] Running upgrade 003_users -> 004_risk_baseline, add deterministic risk baseline
+INFO  [alembic.runtime.migration] Running upgrade 004_risk_baseline -> 005_alert_management, add alert management history
+INFO  [alembic.runtime.migration] Running upgrade 005_alert_management -> 006_datasets, add validated datasets

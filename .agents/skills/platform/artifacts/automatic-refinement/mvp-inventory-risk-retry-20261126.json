@@ -1,0 +1,129 @@
+{
+  "operationId": "op-auto-refine-mvp-inventory-risk-20261126-r2",
+  "parentOperationId": "op-grill-mvp-inventory-risk-20261125",
+  "status": "blocked",
+  "provenance": {
+    "inputDigest": "sha256:c9e70554b5a0f9f21d97d7c5751a3ba05f61b61eeacec2b6a1089b34e3ae55d2",
+    "sourceDigests": [
+      "sha256:c9e70554b5a0f9f21d97d7c5751a3ba05f61b61eeacec2b6a1089b34e3ae55d2",
+      "sha256:4b59108e572b9631dfb7abc1bac92206cfcaaf126e831d117239e56b65782104",
+      "sha256:6eba3b4120c7a4f9d477bbd70dfaa23f3d18ff010226eec2545e59d8884f6aa7",
+      "sha256:88c42b33ef9800966b610def9e557180eb7573a15aec0bcd6c4b41fdff6f75e4",
+      "sha256:8b697f6f8f6be84c126ec10076c03bb8ef776c0e6cd019e6cc496e6ea8a206ae",
+      "sha256:818e7c039bae697dcc8fdc9a786926824f1d74352983baa9b80618b865b2ad22",
+      "sha256:2f43f89fa5e4271d776bc184abdf319fdd05f18d926bf8452a053511cd6028f1"
+    ],
+    "producer": "automatic-refinement",
+    "createdAt": "2026-11-26T00:00:00Z",
+    "parentArtifactRef": "artifact://grill-with-docs/mvp-inventory-risk"
+  },
+  "invocationTrace": [
+    {
+      "invocationId": "inv-critic-20261126-r2",
+      "skill": "automatic-refinement/critic",
+      "status": "completed",
+      "inputDigest": "sha256:c9e70554b5a0f9f21d97d7c5751a3ba05f61b61eeacec2b6a1089b34e3ae55d2",
+      "outputDigest": "sha256:2f43f89fa5e4271d776bc184abdf319fdd05f18d926bf8452a053511cd6028f1",
+      "routingConfidence": 0.91,
+      "evidenceRefs": ["evidence://critic/automatic-refinement-r2"]
+    }
+  ],
+  "skillsInvoked": ["automatic-refinement", "graph-skill-routing"],
+  "routing": {
+    "confidence": 0.91,
+    "selectedCapabilities": [
+      "tracker-metadata-refinement",
+      "sdd-handoff-consistency",
+      "independent-critique"
+    ],
+    "unresolvedRoutes": [
+      "runtime execution and independent verification of a successful RefinementArtifact"
+    ]
+  },
+  "budgetSpent": {
+    "iterations": 1,
+    "subagents": 1,
+    "skillInvocations": 2,
+    "sources": 7,
+    "wallTimeMs": 0
+  },
+  "loop": {
+    "loopId": "loop-auto-refine-mvp-inventory-risk-20261126-r2",
+    "ledgerRef": "ledger://automatic-refinement/op-auto-refine-mvp-inventory-risk-20261126-r2",
+    "recoveryPolicy": "Resolve documented blockers and rerun from the current fixed point; do not claim success from the critic alone.",
+    "progressEvidence": [
+      "ADR-037 was marked superseded by ADR-054.",
+      "The post-grill idea derivation rule was documented.",
+      "The critic identified remaining evidence and baseline blockers."
+    ],
+    "status": "blocker-escalated"
+  },
+  "agentStatuses": [
+    {
+      "agentId": "agent-independent-critic-r2",
+      "capabilities": ["independent-critique"],
+      "status": "completed",
+      "reason": "FAIL: unresolved evidence, baseline, and runtime barriers remain."
+    }
+  ],
+  "handoffs": [
+    {
+      "handoffId": "handoff-critic-20261126-r2",
+      "traceId": "trace-auto-refine-mvp-inventory-risk-20261126-r2",
+      "runId": "run-auto-refine-mvp-inventory-risk-20261126-r2",
+      "inputDigests": [
+        "sha256:c9e70554b5a0f9f21d97d7c5751a3ba05f61b61eeacec2b6a1089b34e3ae55d2"
+      ],
+      "outputDigest": "sha256:2f43f89fa5e4271d776bc184abdf319fdd05f18d926bf8452a053511cd6028f1",
+      "signature": "sha256:2f43f89fa5e4271d776bc184abdf319fdd05f18d926bf8452a053511cd6028f1",
+      "status": "validation-failed",
+      "nextOwner": "orchestrator",
+      "artifactRef": "evidence://critic/automatic-refinement-r2"
+    }
+  ],
+  "evidence": [
+    "Independent critic found unsupported execution claims in the GrillWithDocsArtifact.",
+    "The baseline gate still contains unresolved checks and explicitly blocks publication.",
+    "The tracker design remains a design; remote synchronization and sub-issue capability are unverified."
+  ],
+  "decisions": [
+    "Do not emit refined-awaiting-review while the critic reports unresolved high-severity blockers.",
+    "Keep Project, Milestone, Issue, branch, PR, and implementation mutations blocked."
+  ],
+  "assumptions": [
+    "Current documentation is the fixed point for a future refinement retry."
+  ],
+  "risks": [
+    "Evidence claims require archival command records before they can support approval.",
+    "The baseline remains incomplete for approval and tracker publication.",
+    "The runtime still lacks a successful critic-plus-verifier handoff chain."
+  ],
+  "openQuestions": [
+    "Should the unresolved baseline checks be closed by documentation decisions or by later code/evidence work?",
+    "Which host runtime will provide the complete automatic-refinement loop ledger and verifier evidence?"
+  ],
+  "proposedArtifacts": [
+    "Archived execution evidence for previously reported tests.",
+    "A corrected RequirementsArtifact and ArchitectureArtifact after baseline approval.",
+    "A new automatic-refinement run after blockers are resolved."
+  ],
+  "verification": {
+    "status": "failed",
+    "independent": true,
+    "evidenceRefs": ["evidence://critic/automatic-refinement-r2"],
+    "verdict": {
+      "result": "FAIL",
+      "highFindings": 2,
+      "mediumFindings": 2,
+      "reason": "Evidence, baseline, and runtime barriers remain."
+    }
+  },
+  "limitations": [
+    "No successful RefinementArtifact was emitted.",
+    "No remote tracker mutation was performed.",
+    "No product code was modified.",
+    "The host did not expose wall-clock timing or a complete loop ledger."
+  ],
+  "approvalStatus": "not-approved",
+  "nextConsumer": "automatic-refinement retry after evidence and baseline blockers are resolved"
+}

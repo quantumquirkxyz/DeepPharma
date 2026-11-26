@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "architecture-artifact",
+  "artifactId": "arch-mvp-inventory-risk-20261126-approved",
+  "traceId": "trace-architecture-mvp-inventory-risk-20261126-approved",
+  "operationId": "op-architecture-mvp-inventory-risk-20261126-approved",
+  "status": "superseded",
+  "sourceArtifacts": [
+    "docs/spec/plan-mvp-inventory-risk.md",
+    "artifact://requirements/req-mvp-inventory-risk-20261126-approved"
+  ],
+  "sourceDigests": {
+    "plan": "sha256:16e9d502090f54bd298517d3e810c7dce6bfd856284303ac1e2e8b2e0c817ef2",
+    "requirements": "sha256:approved-requirements-artifact"
+  },
+  "fixedPoint": {
+    "revision": "working-tree-2026-11-26",
+    "scope": "MVP architecture and validation seams",
+    "dryRun": false
+  },
+  "producer": "architecture-design",
+  "owner": "technical-owner",
+  "nextConsumer": "to-spec",
+  "evidence": [
+    {
+      "kind": "architecture-plan",
+      "ref": "docs/spec/plan-mvp-inventory-risk.md"
+    },
+    {
+      "kind": "benchmark",
+      "ref": ".reports/execution/20261126/benchmark-approved-http-final.txt"
+    }
+  ],
+  "approvals": [
+    {
+      "status": "rejected",
+      "authority": "technical-owner",
+      "evidence": "Superseded because the repository architecture review remains proposed and open.",
+      "timestamp": "2026-11-26T00:00:00Z"
+    }
+  ],
+  "blockers": [],
+  "risks": [
+    {
+      "id": "ARCH-R02",
+      "statement": "Production capacity and external integration remain outside this baseline."
+    }
+  ],
+  "createdAt": "2026-11-26T00:00:00Z",
+  "expiresAt": null,
+  "payload": {
+    "architecture": {
+      "style": "modular monolith with layered boundaries",
+      "seams": [
+        "DatasetValidator",
+        "InventoryImportService",
+        "RiskEvaluator",
+        "ExperimentRunner",
+        "TemporalEvaluator",
+        "ExternalInventorySource"
+      ]
+    },
+    "validationStrategy": "API tests, migration validation and approved local HTTP benchmark",
+    "traceability": [],
+    "residualUnknowns": [
+      "Production deployment capacity remains unverified."
+    ]
+  }
+}

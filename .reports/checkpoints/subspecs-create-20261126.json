@@ -1,0 +1,16 @@
+{
+  "operationId": "op-subspecs-deeppharma-mvp-20261126",
+  "repository": "quantumquirkxyz/DeepPharma",
+  "projectNumber": 31,
+  "parentSpecs": [2, 3, 4, 5, 6],
+  "policy": {
+    "nativeSubIssues": true,
+    "sameMilestoneAsParent": true,
+    "initialStatus": "status:triage",
+    "ticketsDeferred": true
+  },
+  "status": "completed",
+  "nativeSubIssuesLinked": 18,
+  "projectItemsAdded": 18,
+  "subspecIssueRange": [7, 24]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "parent": 2,
+    "title": "Governance Evidence and Baseline Provenance",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/7",
+    "body": ".reports/publication/subspecs/01-governance-evidence-and-baseline-provenance.md"
+  },
+  {
+    "parent": 2,
+    "title": "Tracker Metadata and Readiness Contract",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/8",
+    "body": ".reports/publication/subspecs/02-tracker-metadata-and-readiness-contract.md"
+  },
+  {
+    "parent": 2,
+    "title": "Refinement Exception and Handoff",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/9",
+    "body": ".reports/publication/subspecs/03-refinement-exception-and-handoff.md"
+  },
+  {
+    "parent": 3,
+    "title": "Dataset Validation",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/10",
+    "body": ".reports/publication/subspecs/04-dataset-validation.md"
+  },
+  {
+    "parent": 3,
+    "title": "Safe Dataset Application",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/11",
+    "body": ".reports/publication/subspecs/05-safe-dataset-application.md"
+  },
+  {
+    "parent": 3,
+    "title": "Inventory State and Coverage",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/12",
+    "body": ".reports/publication/subspecs/06-inventory-state-and-coverage.md"
+  },
+  {
+    "parent": 4,
+    "title": "Risk Evaluation Contract",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/13",
+    "body": ".reports/publication/subspecs/07-risk-evaluation-contract.md"
+  },
+  {
+    "parent": 4,
+    "title": "Reproducible Experiment and Temporal Validation",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/14",
+    "body": ".reports/publication/subspecs/08-reproducible-experiment-and-temporal-validation.md"
+  },
+  {
+    "parent": 4,
+    "title": "Deterministic Fallback and Lineage",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/15",
+    "body": ".reports/publication/subspecs/09-deterministic-fallback-and-lineage.md"
+  },
+  {
+    "parent": 4,
+    "title": "Drift and Explanation Controls",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/16",
+    "body": ".reports/publication/subspecs/10-drift-and-explanation-controls.md"
+  },
+  {
+    "parent": 5,
+    "title": "Alert State Machine",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/17",
+    "body": ".reports/publication/subspecs/11-alert-state-machine.md"
+  },
+  {
+    "parent": 5,
+    "title": "Audit Authorization and Integrity",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/18",
+    "body": ".reports/publication/subspecs/12-audit-authorization-and-integrity.md"
+  },
+  {
+    "parent": 5,
+    "title": "Simulated Notifications and Retry",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/19",
+    "body": ".reports/publication/subspecs/13-simulated-notifications-and-retry.md"
+  },
+  {
+    "parent": 6,
+    "title": "RBAC and Scope Enforcement",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/20",
+    "body": ".reports/publication/subspecs/14-rbac-and-scope-enforcement.md"
+  },
+  {
+    "parent": 6,
+    "title": "Data Protection and Retention",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/21",
+    "body": ".reports/publication/subspecs/15-data-protection-and-retention.md"
+  },
+  {
+    "parent": 6,
+    "title": "Operations Migration and Rollback",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/22",
+    "body": ".reports/publication/subspecs/16-operations-migration-and-rollback.md"
+  },
+  {
+    "parent": 6,
+    "title": "Observability and Performance Evidence",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/23",
+    "body": ".reports/publication/subspecs/17-observability-and-performance-evidence.md"
+  },
+  {
+    "parent": 6,
+    "title": "Final Verification and Release Gate",
+    "url": "https://github.com/quantumquirkxyz/DeepPharma/issues/24",
+    "body": ".reports/publication/subspecs/18-final-verification-and-release-gate.md"
+  }
+]

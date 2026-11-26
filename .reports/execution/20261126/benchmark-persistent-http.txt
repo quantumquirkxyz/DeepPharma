@@ -1,0 +1,7 @@
+environment=uvicorn HTTP loopback + temporary SQLite file + persistent client per worker
+concurrent_inventory_reads=100
+statuses=[200]
+p50_ms=76.004
+p95_ms=102.563
+throughput_requests_per_second=98.518
+status=reproduction

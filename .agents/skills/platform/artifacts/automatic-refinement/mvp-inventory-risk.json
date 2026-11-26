@@ -1,0 +1,146 @@
+{
+  "operationId": "op-auto-refine-mvp-inventory-risk-20261126",
+  "parentOperationId": "op-grill-mvp-inventory-risk-20261125",
+  "status": "blocked",
+  "provenance": {
+    "inputDigest": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+    "sourceDigests": [
+      "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "sha256:4b59108e572b9631dfb7abc1bac92206cfcaaf126e831d117239e56b65782104",
+      "sha256:6eba3b4120c7a4f9d477bbd70dfaa23f3d18ff010226eec2545e59d8884f6aa7",
+      "sha256:88c42b33ef9800966b610def9e557180eb7573a15aec0bcd6c4b41fdff6f75e4",
+      "sha256:bf6f2fc3ecdd9cdb47597c551b4e7b9425f2c1e11f2abfe986a27f0101538839",
+      "sha256:818e7c039bae697dcc8fdc9a786926824f1d74352983baa9b80618b865b2ad22"
+    ],
+    "producer": "automatic-refinement",
+    "createdAt": "2026-11-26T00:00:00Z",
+    "parentArtifactRef": "artifact://grill-with-docs/mvp-inventory-risk"
+  },
+  "invocationTrace": [
+    {
+      "invocationId": "inv-graph-skill-routing-20261126",
+      "skill": "graph-skill-routing",
+      "status": "planned",
+      "inputDigest": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "outputDigest": null,
+      "routingConfidence": 0.82,
+      "evidenceRefs": ["evidence://routing/automatic-refinement"]
+    },
+    {
+      "invocationId": "inv-automatic-refinement-20261126",
+      "skill": "automatic-refinement",
+      "status": "validation-failed",
+      "inputDigest": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "outputDigest": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "routingConfidence": 0.82,
+      "evidenceRefs": ["evidence://verification/refinement-artifact-missing"]
+    }
+  ],
+  "skillsInvoked": ["automatic-refinement", "graph-skill-routing"],
+  "routing": {
+    "confidence": 0.82,
+    "selectedCapabilities": [
+      "tracker-metadata-refinement",
+      "hierarchy-consistency",
+      "sdd-handoff-consistency"
+    ],
+    "unresolvedRoutes": [
+      "independent verifier rejected completion because no RefinementArtifact existed before verification"
+    ]
+  },
+  "budgetSpent": {
+    "iterations": 1,
+    "subagents": 4,
+    "skillInvocations": 2,
+    "sources": 6,
+    "wallTimeMs": 0
+  },
+  "loop": {
+    "loopId": "loop-auto-refine-mvp-inventory-risk-20261126",
+    "ledgerRef": "ledger://automatic-refinement/op-auto-refine-mvp-inventory-risk-20261126",
+    "recoveryPolicy": "Do not retry identically; emit a new run after the missing artifact/runtime barrier is resolved.",
+    "progressEvidence": [
+      "Tracker design and local contract overrides were refined.",
+      "Independent verification found no RefinementArtifact to verify."
+    ],
+    "status": "blocker-escalated"
+  },
+  "agentStatuses": [
+    {
+      "agentId": "agent-tracker-labels",
+      "capabilities": ["tracker-metadata-refinement"],
+      "status": "completed"
+    },
+    {
+      "agentId": "agent-tracker-hierarchy",
+      "capabilities": ["hierarchy-consistency"],
+      "status": "completed"
+    },
+    {
+      "agentId": "agent-sdd-handoff",
+      "capabilities": ["sdd-handoff-consistency"],
+      "status": "completed"
+    },
+    {
+      "agentId": "agent-independent-verifier",
+      "capabilities": ["independent-verification"],
+      "status": "completed",
+      "reason": "FAIL: no RefinementArtifact was present for verification."
+    }
+  ],
+  "handoffs": [
+    {
+      "handoffId": "handoff-independent-verifier-20261126",
+      "traceId": "trace-auto-refine-mvp-inventory-risk-20261126",
+      "runId": "run-auto-refine-mvp-inventory-risk-20261126",
+      "inputDigests": [
+        "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd"
+      ],
+      "outputDigest": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "signature": "sha256:40bb40e1179ba04dc4cce2267caf4944e59133f44f87db90e9365ded927085bd",
+      "status": "validation-failed",
+      "nextOwner": "orchestrator",
+      "artifactRef": "evidence://verification/refinement-artifact-missing"
+    }
+  ],
+  "evidence": [
+    "The GrillWithDocsArtifact exists and declares automatic-refinement as next consumer.",
+    "Tracker design decisions are documented in docs/engineering/tracker-design.md.",
+    "Independent verification returned FAIL because no RefinementArtifact existed."
+  ],
+  "decisions": [
+    "Do not claim refined-awaiting-review without a verified RefinementArtifact.",
+    "Do not create GitHub Projects, Milestones, Issues, branches, PRs, or code from this blocked run."
+  ],
+  "assumptions": [
+    "The existing GrillWithDocsArtifact remains the authoritative input for a future retry."
+  ],
+  "risks": [
+    "A future run must preserve the current source fixed point or terminate as stale-input.",
+    "Remote tracker publication remains blocked by baseline approval and missing SDD handoffs."
+  ],
+  "openQuestions": [
+    "Which host capability will provide the complete automatic-refinement runtime with critic and verifier handoffs?"
+  ],
+  "proposedArtifacts": [
+    "RefinementArtifact retry after runtime and fixed-point validation are available.",
+    "RequirementsArtifact and ArchitectureArtifact before to-spec/to-tickets."
+  ],
+  "verification": {
+    "status": "failed",
+    "independent": true,
+    "evidenceRefs": ["evidence://verification/refinement-artifact-missing"],
+    "verdict": {
+      "result": "FAIL",
+      "reason": "No RefinementArtifact JSON existed before independent verification."
+    }
+  },
+  "limitations": [
+    "This run did not produce a successful refinement artifact.",
+    "No remote GitHub state was mutated.",
+    "No product code was changed.",
+    "Wall-clock timing was not exposed by the host."
+  ],
+  "approvalStatus": "not-approved",
+  "nextConsumer": "automatic-refinement retry after runtime barrier resolution"
+}
