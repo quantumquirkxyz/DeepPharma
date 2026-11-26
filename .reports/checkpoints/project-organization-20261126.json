@@ -1,0 +1,63 @@
+{
+  "operationId": "op-project-organization-deeppharma-mvp-20261126",
+  "project": {
+    "number": 31,
+    "id": "PVT_kwHOB2Vrws4BtX6H",
+    "title": "DeepPharma — MVP",
+    "visibility": "public",
+    "repository": "quantumquirkxyz/DeepPharma"
+  },
+  "nativeFields": [
+    "Title",
+    "Assignees",
+    "Status",
+    "Labels",
+    "Linked pull requests",
+    "Milestone",
+    "Repository",
+    "Reviewers",
+    "Parent issue",
+    "Sub-issues progress",
+    "Created",
+    "Updated",
+    "Closed"
+  ],
+  "status": {
+    "options": [
+      "Backlog",
+      "Ready",
+      "In Progress",
+      "Blocked",
+      "In Review",
+      "Done",
+      "Not Planned"
+    ],
+    "items": 41,
+    "ready": 25,
+    "blocked": 16,
+    "assignee": "quantumquirkxyz"
+  },
+  "views": [
+    {
+      "name": "Delivery Table",
+      "layout": "TABLE_LAYOUT",
+      "filter": "is:open"
+    },
+    {
+      "name": "Board Delivery",
+      "layout": "BOARD_LAYOUT",
+      "filter": "is:open"
+    },
+    {
+      "name": "Blocked and Triage",
+      "layout": "TABLE_LAYOUT",
+      "filter": "is:open label:\"status:blocked\" OR label:\"status:triage\" OR label:\"status:needs-info\""
+    },
+    {
+      "name": "Traceability",
+      "layout": "TABLE_LAYOUT",
+      "filter": "is:open"
+    }
+  ],
+  "verified": true
+}

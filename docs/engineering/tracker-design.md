@@ -9,8 +9,8 @@
 - **Repository:** `quantumquirkxyz/DeepPharma`
 - **Title:** `DeepPharma — MVP`
 - **Visibility:** pública
-- **Views iniciales:** Board Delivery, Table Traceability y Table
-  Blocked/Triage
+- **Views:** `Board Delivery`, `Delivery Table`, `Blocked and Triage` y
+  `Traceability`
 
 ## Milestones
 
