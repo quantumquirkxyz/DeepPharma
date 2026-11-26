@@ -1,0 +1,37 @@
+{
+  "repository": "quantumquirkxyz/DeepPharma",
+  "date": "2026-11-26",
+  "overall": {
+    "rating": "viable-for-incremental-implementation",
+    "implementation_ready": [25, 28],
+    "blocked_tickets": "26-42",
+    "mvp_complete": false,
+    "production_ready": false
+  },
+  "baseline": {
+    "api_tests": {"status": "pass", "passed": 12},
+    "api_statement_coverage": {"status": "pass", "percent": 93, "statements": 386},
+    "web_lint": "pass",
+    "web_build": "pass",
+    "isolated_migrations": "pass",
+    "existing_database_migration_check": "blocked",
+    "skill_bundle_gate": "blocked_missing_external_fixtures"
+  },
+  "findings": [
+    {"id": "F1", "severity": "high", "confidence": "high", "topic": "coverage-formula-not-implemented", "remediation": 30},
+    {"id": "F2", "severity": "high", "confidence": "high", "topic": "authorization-scope-incomplete", "remediation": 38},
+    {"id": "F3", "severity": "high", "confidence": "high", "topic": "alert-transition-rules-incomplete", "remediation": 35},
+    {"id": "F4", "severity": "high", "confidence": "high", "topic": "dataset-application-missing", "remediation": 29},
+    {"id": "F5", "severity": "medium", "confidence": "high", "topic": "runtime-schema-creation-mixes-with-alembic"},
+    {"id": "F6", "severity": "high", "confidence": "high", "topic": "audit-lineage-notification-and-ml-evidence-incomplete"},
+    {"id": "F7", "severity": "medium", "confidence": "high", "topic": "alembic-model-migration-nullability-drift"}
+  ],
+  "artifacts": {
+    "review_markdown": ".reports/20261126-project-review.md",
+    "readme": "README.md"
+  },
+  "validation": {
+    "claims_are_evidence_backed": true,
+    "unexecuted_acceptance_criteria_are_marked": true
+  }
+}

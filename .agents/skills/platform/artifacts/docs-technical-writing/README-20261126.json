@@ -1,0 +1,38 @@
+{
+  "document_id": "README-20261126",
+  "document": "README.md",
+  "version": "1.0",
+  "audience": [
+    "developers",
+    "reviewers",
+    "maintainers",
+    "academic stakeholders"
+  ],
+  "reader_outcome": [
+    "understand the current system boundary",
+    "run the tracer bullet locally",
+    "inspect verification evidence",
+    "identify the next implementation tickets"
+  ],
+  "sources": [
+    "CONTEXT.md",
+    "docs/requirements/acceptance-traceability-mvp.md",
+    "docs/quality/evidence-register.md",
+    "docs/engineering/tracker-design.md",
+    "apps/api/app/",
+    "apps/web/app/",
+    "GitHub Project #31",
+    "GitHub Issues #25-#42"
+  ],
+  "commands": [
+    "uv run pytest --cov=app --cov-report=term-missing",
+    "bun run lint",
+    "bun run build",
+    "git diff --check"
+  ],
+  "accessibility_target": "GitHub Markdown with text alternatives through captions and Mermaid labels",
+  "license_provenance": "Repository-owned documentation based on repository source and approved planning artifacts",
+  "review_date": "2026-11-26",
+  "maintenance_owner": "DeepPharma maintainers",
+  "status": "validated-with-known-project-gates"
+}

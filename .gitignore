@@ -6,6 +6,7 @@ apps/web/node_modules/
 # Local and generated development state
 __pycache__/
 .pytest_cache/
+.coverage
 .opencode/
 .reports/review/
 
