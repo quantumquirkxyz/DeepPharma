@@ -1,0 +1,77 @@
+@startuml DCD-CU05-01
+title DCD-CU05-01 — Clases de diseño para actualización de inventario
+
+skinparam shadowing false
+
+class PantallaActualizacionInventario {
+  +iniciarActualizacion(): void
+  +capturarDatos(): DatosInventario
+  +mostrarResultado(resultado: ResultadoOperacion): void
+}
+
+class ControlGestionInventario {
+  +registrarActualizacion(datos: DatosInventario): ResultadoOperacion
+  -validarReferencias(datos: DatosInventario): void
+  -validarCantidad(stockActual: decimal): void
+}
+
+class Medicamento {
+  -medicamentoId: UUID
+  -nombre: String
+  +esValido(): boolean
+}
+
+class CentroSalud {
+  -centroSaludId: UUID
+  -nombre: String
+  +estaActivo(): boolean
+}
+
+class InventarioActual {
+  -stockActual: decimal
+  -fechaActualizacion: DateTime
+  +validarCantidad(stockActual: decimal): void
+  +actualizarCantidad(movimiento: RegistroInventario): void
+}
+
+class RegistroInventario {
+  -registroId: UUID
+  -cantidad: decimal
+  -fechaRegistro: DateTime
+  -fuente: FuenteInventario
+  +crear(datos: DatosInventario): RegistroInventario
+  +confirmar(): void
+}
+
+class DatosInventario {
+  +medicamentoId: UUID
+  +centroSaludId: UUID
+  +stockActual: decimal
+  +fechaRegistro: DateTime
+}
+
+class ResultadoOperacion {
+  +exitoso: boolean
+  +mensaje: String
+}
+
+enum FuenteInventario {
+  MANUAL
+  EXTERNA
+}
+
+PantallaActualizacionInventario --> ControlGestionInventario
+ControlGestionInventario --> Medicamento
+ControlGestionInventario --> CentroSalud
+ControlGestionInventario --> InventarioActual
+ControlGestionInventario --> RegistroInventario
+ControlGestionInventario --> DatosInventario
+ControlGestionInventario --> ResultadoOperacion
+RegistroInventario --> FuenteInventario
+InventarioActual "1" o-- "*" RegistroInventario
+
+note bottom
+  Cada operación de DS-CU05-01 y DCOL-CU05-01
+  corresponde a una responsabilidad u operación definida.
+end note
+@enduml

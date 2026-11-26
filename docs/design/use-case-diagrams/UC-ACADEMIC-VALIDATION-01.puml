@@ -1,0 +1,25 @@
+@startuml UC-ACADEMIC-VALIDATION-01
+title UC-ACADEMIC-VALIDATION-01 — Evaluación académica externa del producto
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "ACT-04\nEvaluador de usabilidad" as ACT04
+actor "ACT-02\nFarmacéutico participante" as ACT02
+actor "ACT-05\nAdministrador de farmacia participante" as ACT05
+
+rectangle "Actividad académica de validación de DeepPharma" {
+  usecase "CU-06\nEvaluar usabilidad del sistema\nmediante escala SUS" as CU06
+}
+
+ACT04 -- CU06
+ACT02 -- CU06 : participa
+ACT05 -- CU06 : participa
+
+note bottom
+  CU-06 se conserva para la entrega académica.
+  Este modelo no afirma que DeepPharma implemente un módulo SUS.
+  La evaluación se ejecuta con una herramienta o procedimiento externo.
+end note
+@enduml

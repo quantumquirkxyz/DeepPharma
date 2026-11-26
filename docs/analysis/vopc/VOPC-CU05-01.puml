@@ -1,0 +1,37 @@
+@startuml VOPC-CU05-01
+allowmixing
+title VOPC-CU05-01 — Registrar actualización válida de inventario
+
+left to right direction
+skinparam shadowing false
+
+actor "Farmacéutico" as Actor
+
+package "Boundary" {
+  class PantallaActualizacionInventario
+}
+
+package "Control" {
+  class ControlGestionInventario
+}
+
+package "Entity" {
+  class Medicamento
+  class CentroSalud
+  class InventarioActual
+  class RegistroInventario
+}
+
+Actor --> PantallaActualizacionInventario
+PantallaActualizacionInventario --> ControlGestionInventario
+ControlGestionInventario --> Medicamento
+ControlGestionInventario --> CentroSalud
+ControlGestionInventario --> InventarioActual
+ControlGestionInventario --> RegistroInventario
+
+note bottom
+  VOPC: vista de clases participantes de ESC-CU05-01.
+  No contiene mensajes numerados; esos pertenecen a DCOL-CU05-01.
+  Las clases técnicas de persistencia y adaptadores se agregan en diseño.
+end note
+@enduml

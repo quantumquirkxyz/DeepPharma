@@ -1,0 +1,36 @@
+@startuml deployment-view
+title Vista de despliegue — DeepPharma
+
+skinparam shadowing false
+
+node "Dispositivo del usuario" as Client {
+  artifact "Navegador" as Browser
+}
+
+node "Entorno de aplicación" as App {
+  artifact "Frontend / Dashboard" as Frontend
+  artifact "API DeepPharma" as Api
+  artifact "Worker de tareas" as Worker
+  artifact "Runtime de inferencia" as Inference
+}
+
+database "PostgreSQL" as Database
+node "Almacenamiento de modelos" as ModelStore
+cloud "SALMI / fuente externa\n(adaptador)" as External
+cloud "Servicio de notificaciones" as Notifications
+
+Browser --> Frontend : HTTPS
+Frontend --> Api : HTTPS / API
+Api --> Database : SQL
+Worker --> Database : SQL
+Worker --> ModelStore : modelos / reportes
+Inference --> Database : predicciones
+Inference --> ModelStore : modelo aprobado
+Worker --> External : contrato/adaptador
+Api --> Notifications : canal autorizado
+
+note bottom
+  Despliegue candidato para el MVP.
+  SALMI permanece simulado hasta disponer de contrato autorizado.
+end note
+@enduml

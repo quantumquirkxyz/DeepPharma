@@ -1,0 +1,32 @@
+@startuml implementation-view
+title Vista de implementación — DeepPharma
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+component "Frontend\nDashboard" as Frontend
+component "API\nPresentación" as Api
+component "Aplicación\nCasos de uso" as Application
+component "Dominio\nInventario y alertas" as Domain
+component "ML\nEntrenamiento e inferencia" as ML
+component "Integraciones\nPuertos y adaptadores" as Integrations
+component "Persistencia" as Persistence
+database "PostgreSQL" as Database
+artifact "Modelos versionados" as Models
+
+Frontend --> Api
+Api --> Application
+Application --> Domain
+Application --> ML
+Application --> Integrations
+Domain --> Persistence
+ML --> Persistence
+ML --> Models
+Persistence --> Database
+Integrations --> Persistence
+
+note bottom
+  Los módulos se despliegan inicialmente como un monolito modular.
+  Las dependencias deben dirigirse hacia contratos estables.
+end note
+@enduml

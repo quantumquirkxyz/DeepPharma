@@ -1,0 +1,30 @@
+@startuml DS-CU05-01
+title DS-CU05-01 — Registrar actualización válida de inventario
+
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+
+actor Farmacéutico as Actor
+boundary PantallaActualizacionInventario as Boundary
+control ControlGestionInventario as Control
+participant Medicamento as Medicamento
+participant CentroSalud as Centro
+participant InventarioActual as Inventario
+participant RegistroInventario as Registro
+
+Actor -> Boundary : iniciarActualizacion()
+Boundary -> Control : registrarActualizacion(datos)
+Control -> Medicamento : validarIdentidad(medicamentoId)
+Control -> Centro : validarAmbito(centroId)
+Control -> Inventario : validarCantidad(stockActual)
+Control -> Registro : crearMovimiento(datos)
+Control -> Inventario : actualizarCantidad(movimiento)
+Control -> Registro : confirmarRegistro()
+
+note right
+  Los resultados se representan mediante
+  la postcondición del escenario.
+  No se dibujan retornos hacia la izquierda.
+end note
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml UC-BUSINESS-CURRENT-01
+title UC-BUSINESS-CURRENT-01 — Modelo hipotético académico del negocio actual
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Farmacéutico" as Pharmacist
+actor "Administrador de farmacia" as PharmacyAdmin
+actor "Almacén central" as CentralWarehouse
+actor "Sistema de inventario existente\n(SALMI u otro)" as ExistingSystem
+actor "Proveedor / proceso de compras" as Procurement
+actor "Paciente" as Patient
+
+rectangle "Proceso actual de gestión de medicamentos" {
+  usecase "Registrar o consultar\nexistencias" as CurrentStock
+  usecase "Detectar necesidad\nde reposición" as DetectShortage
+  usecase "Solicitar reposición" as RequestSupply
+  usecase "Esperar y procesar\nreposición" as ProcessSupply
+  usecase "Informar falta de\nmedicamento" as ReportShortage
+  usecase "Recibir medicamento\no alternativa" as ReceiveMedicine
+}
+
+Pharmacist -- CurrentStock
+PharmacyAdmin -- CurrentStock
+Pharmacist -- DetectShortage
+PharmacyAdmin -- DetectShortage
+DetectShortage --> RequestSupply : <<leads to>>
+Pharmacist -- RequestSupply
+PharmacyAdmin -- RequestSupply
+CentralWarehouse -- ProcessSupply
+Procurement -- ProcessSupply
+ProcessSupply --> ReceiveMedicine : <<leads to>>
+Pharmacist -- ReportShortage
+Patient -- ReportShortage
+ExistingSystem -- CurrentStock
+
+note right of ExistingSystem
+  Hipótesis de modelado:
+  la operación concreta de SALMI
+  debe validarse con evidencia.
+end note
+
+note bottom
+  Modelo hipotético académico provisional.
+  No afirma representar el proceso institucional real.
+  Supuestos: ASM-01 a ASM-06.
+  No representa funcionalidades internas de DeepPharma.
+  Debe reemplazarse o validarse con evidencia institucional.
+end note
+@enduml

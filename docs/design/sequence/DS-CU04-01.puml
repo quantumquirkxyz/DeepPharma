@@ -1,0 +1,31 @@
+@startuml DS-CU04-01
+title DS-CU04-01 — Consultar alertas críticas
+
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+
+actor Farmacéutico as Actor
+boundary PantallaAlertasPriorizadas as Boundary
+control ControlConsultaAlertas as Control
+participant CentroSalud as Centro
+participant AlertaDesabastecimiento as Alerta
+participant PrediccionRiesgo as Prediccion
+participant InventarioActual as Inventario
+participant Medicamento as Medicamento
+
+Actor -> Boundary : solicitarAlertas(filtros)
+Boundary -> Control : consultarAlertas(filtros)
+Control -> Centro : verificarAmbito(actor, filtros)
+Control -> Alerta : obtenerAlertasCriticas(ámbito)
+Control -> Prediccion : consultarPrediccion(alertas)
+Control -> Inventario : consultarCobertura(alertas)
+Control -> Medicamento : identificarMedicamentos(alertas)
+Control -> Boundary : mostrarAlertasPriorizadas()
+
+note right
+  Los resultados se representan mediante
+  la postcondición del escenario.
+  No se dibujan retornos hacia la izquierda.
+end note
+
+@enduml

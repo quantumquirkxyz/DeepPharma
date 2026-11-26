@@ -1,0 +1,35 @@
+@startuml data-model
+title Modelo lógico de datos — DeepPharma
+
+hide methods
+skinparam shadowing false
+
+entity Usuario
+entity Rol
+entity CentroSalud
+entity Medicamento
+entity InventarioActual
+entity RegistroInventario
+entity ConjuntoDatos
+entity Experimento
+entity Modelo
+entity PrediccionRiesgo
+entity AlertaDesabastecimiento
+entity GestionAlerta
+entity FuenteIntegracion
+
+Usuario }o--o{ Rol
+Usuario }o--o{ CentroSalud : ámbito
+CentroSalud ||--o{ InventarioActual
+Medicamento ||--o{ InventarioActual
+InventarioActual ||--o{ RegistroInventario
+FuenteIntegracion ||--o{ ConjuntoDatos
+ConjuntoDatos ||--o{ Experimento
+Experimento ||--o{ Modelo
+Modelo ||--o{ PrediccionRiesgo
+InventarioActual ||--o{ PrediccionRiesgo
+PrediccionRiesgo ||--o{ AlertaDesabastecimiento
+AlertaDesabastecimiento ||--o{ GestionAlerta
+Usuario ||--o{ GestionAlerta
+
+@enduml

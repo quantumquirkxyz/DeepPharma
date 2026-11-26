@@ -1,0 +1,30 @@
+@startuml DCOL-CU04-01
+allowmixing
+title DCOL-CU04-01 — Consultar alertas críticas
+
+left to right direction
+skinparam shadowing false
+
+actor "Farmacéutico" as Actor
+class PantallaAlertasPriorizadas
+class ControlConsultaAlertas
+class CentroSalud
+class AlertaDesabastecimiento
+class PrediccionRiesgo
+class InventarioActual
+class Medicamento
+
+Actor --> PantallaAlertasPriorizadas : 1: solicitarAlertas(filtros)
+PantallaAlertasPriorizadas --> ControlConsultaAlertas : 2: consultarAlertas(filtros)
+ControlConsultaAlertas --> CentroSalud : 2.1: verificarAmbito(actor, filtros)
+ControlConsultaAlertas --> AlertaDesabastecimiento : 2.2: obtenerAlertasCriticas(ámbito)
+ControlConsultaAlertas --> PrediccionRiesgo : 2.3: consultarPrediccion(alertas)
+ControlConsultaAlertas --> InventarioActual : 2.4: consultarCobertura(alertas)
+ControlConsultaAlertas --> Medicamento : 2.5: identificarMedicamentos(alertas)
+ControlConsultaAlertas --> PantallaAlertasPriorizadas : 2.6: mostrarAlertasPriorizadas()
+
+note bottom
+  La colaboración representa el mismo comportamiento que DS-CU04-01.
+  La priorización operativa debe provenir de reglas aprobadas.
+end note
+@enduml

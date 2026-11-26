@@ -1,0 +1,26 @@
+@startuml process-view
+title Vista de procesos — DeepPharma
+
+skinparam shadowing false
+
+start
+:Recibir actualización o datos;
+:Validar esquema y permisos;
+if (Datos válidos?) then (sí)
+  :Persistir inventario;
+  fork
+    :Programar o ejecutar inferencia;
+  fork again
+    :Actualizar consultas y reportes;
+  end fork
+  if (Riesgo crítico?) then (sí)
+    :Crear alerta;
+    :Notificar por canal autorizado;
+  else (no)
+    :Conservar resultado sin notificación crítica;
+  endif
+else (no)
+  :Registrar rechazo y evidencia;
+endif
+stop
+@enduml

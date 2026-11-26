@@ -1,0 +1,60 @@
+@startuml UC-SYSTEM-PROPOSED-01
+title UC-SYSTEM-PROPOSED-01 — Modelo de casos de uso propuesto
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Administrador del sistema" as SystemAdmin
+actor "Farmacéutico" as Pharmacist
+actor "Ingeniero de Machine Learning" as MLEngineer
+actor "Administrador de farmacia" as PharmacyAdmin
+actor "SALMI" as SALMI
+actor "Portal de Datos Abiertos\nde Panamá" as OpenData
+actor "Servicio de correo /\nnotificaciones" as NotificationService
+
+rectangle "DeepPharma" {
+  usecase "CU-01\nRegistrar datos históricos\nde inventario" as UC01
+  usecase "CU-02\nEntrenar y evaluar\nmodelos de ML" as UC02
+  usecase "CU-03\nGenerar predicciones\nde riesgo" as UC03
+  usecase "CU-04\nVisualizar y gestionar\nalertas priorizadas" as UC04
+  usecase "CU-05\nGestionar inventario\nen tiempo real" as UC05
+  usecase "Notificar riesgo\ncrítico" as NotifyCritical
+}
+
+SystemAdmin -- UC01
+SystemAdmin -- UC03
+SystemAdmin -- UC04
+SystemAdmin -- UC05
+SystemAdmin -- NotifyCritical
+
+Pharmacist -- UC03
+Pharmacist -- UC04
+Pharmacist -- UC05
+
+MLEngineer -- UC01
+MLEngineer -- UC02
+MLEngineer -- UC03
+
+PharmacyAdmin -- UC04
+PharmacyAdmin -- UC05
+
+SALMI -- UC05
+OpenData -- UC01
+NotificationService -- NotifyCritical
+
+UC03 ..> NotifyCritical : <<triggers when critical>>
+
+note right of UC03
+  Dos disparadores:
+  - ejecución programada interna;
+  - ejecución manual autorizada.
+  El temporizador no es actor externo.
+end note
+
+note bottom
+  Modelo inicial de alto nivel.
+  Relaciones include/extend, permisos y refinamientos
+  se validarán contra las especificaciones de los casos de uso.
+  CU-06/SUS es actividad externa de validación.
+end note
+@enduml

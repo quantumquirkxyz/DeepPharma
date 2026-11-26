@@ -1,0 +1,29 @@
+@startuml DCOL-CU05-01
+allowmixing
+title DCOL-CU05-01 — Registrar actualización válida de inventario
+
+left to right direction
+skinparam shadowing false
+
+actor "Farmacéutico" as Actor
+class PantallaActualizacionInventario
+class ControlGestionInventario
+class Medicamento
+class CentroSalud
+class InventarioActual
+class RegistroInventario
+
+Actor --> PantallaActualizacionInventario : 1: iniciarActualizacion()
+PantallaActualizacionInventario --> ControlGestionInventario : 2: registrarActualizacion(datos)
+ControlGestionInventario --> Medicamento : 2.1: validarIdentidad(medicamentoId)
+ControlGestionInventario --> CentroSalud : 2.2: validarAmbito(centroId)
+ControlGestionInventario --> InventarioActual : 2.3: validarCantidad(stockActual)
+ControlGestionInventario --> RegistroInventario : 2.4: crearMovimiento(datos)
+ControlGestionInventario --> InventarioActual : 2.5: actualizarCantidad(movimiento)
+ControlGestionInventario --> RegistroInventario : 2.6: confirmarRegistro()
+
+note bottom
+  La colaboración representa el mismo comportamiento que DS-CU05-01.
+  Las responsabilidades se derivan del VOPC-CU05-01.
+end note
+@enduml

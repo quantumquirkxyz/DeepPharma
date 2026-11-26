@@ -1,0 +1,36 @@
+@startuml data-view
+title Vista de datos — DeepPharma
+
+skinparam shadowing false
+
+entity Usuario
+entity Rol
+entity CentroSalud
+entity Medicamento
+entity InventarioActual
+entity RegistroInventario
+entity ConjuntoDatos
+entity Experimento
+entity Modelo
+entity PrediccionRiesgo
+entity AlertaDesabastecimiento
+entity GestionAlerta
+
+Usuario }o--o{ Rol : asignación
+Usuario }o--o{ CentroSalud : ámbito
+CentroSalud ||--o{ InventarioActual : contiene
+Medicamento ||--o{ InventarioActual : identifica
+InventarioActual ||--o{ RegistroInventario : historial
+ConjuntoDatos ||--o{ Experimento : utiliza
+Experimento ||--o{ Modelo : produce
+Modelo ||--o{ PrediccionRiesgo : genera
+InventarioActual ||--o{ PrediccionRiesgo : contextualiza
+PrediccionRiesgo ||--o{ AlertaDesabastecimiento : puede generar
+AlertaDesabastecimiento ||--o{ GestionAlerta : registra
+Usuario ||--o{ GestionAlerta : ejecuta
+
+note bottom
+  Modelo conceptual preliminar.
+  Claves, restricciones y normalización se definirán en el modelo lógico.
+end note
+@enduml

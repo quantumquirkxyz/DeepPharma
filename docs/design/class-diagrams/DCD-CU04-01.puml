@@ -1,0 +1,104 @@
+@startuml DCD-CU04-01
+title DCD-CU04-01 — Clases de diseño para consulta de alertas críticas
+
+skinparam shadowing false
+
+class PantallaAlertasPriorizadas {
+  +solicitarAlertas(filtros: FiltrosAlerta): void
+  +mostrarAlertasPriorizadas(alertas: ListaAlerta): void
+}
+
+class ControlConsultaAlertas {
+  +consultarAlertas(filtros: FiltrosAlerta): ListaAlerta
+  -verificarAmbito(actor: Usuario, filtros: FiltrosAlerta): void
+  -priorizar(alertas: ListaAlerta): ListaAlerta
+}
+
+class CentroSalud {
+  -centroSaludId: UUID
+  -nombre: String
+  +permiteConsulta(usuario: Usuario): boolean
+}
+
+class AlertaDesabastecimiento {
+  -alertaId: UUID
+  -nivel: NivelAlerta
+  -estado: EstadoAlerta
+  -fechaCreacion: DateTime
+  +esCritica(): boolean
+  +estaVigente(): boolean
+}
+
+class PrediccionRiesgo {
+  -prediccionId: UUID
+  -probabilidad: decimal
+  -horizonteDias: int
+  -modeloVersion: String
+  +estaVigente(): boolean
+}
+
+class InventarioActual {
+  -stockActual: decimal
+  -diasCobertura: decimal
+  -fechaActualizacion: DateTime
+  +obtenerCobertura(): decimal
+}
+
+class Medicamento {
+  -medicamentoId: UUID
+  -nombre: String
+  +obtenerDescripcion(): String
+}
+
+class FiltrosAlerta {
+  +centroSaludId: UUID
+  +medicamentoId: UUID
+  +nivel: NivelAlerta
+  +estado: EstadoAlerta
+}
+
+class Usuario {
+  +usuarioId: UUID
+  +rol: RolUsuario
+  +puedeConsultar(centro: CentroSalud): boolean
+}
+
+enum NivelAlerta {
+  CRITICA
+  MEDIA
+  OK
+  INDETERMINADA
+}
+
+enum EstadoAlerta {
+  NUEVA
+  RECONOCIDA
+  EN_REVISION
+  RESUELTA
+  DESCARTADA
+}
+
+enum RolUsuario {
+  ADMINISTRADOR_SISTEMA
+  FARMACEUTICO
+  ADMINISTRADOR_FARMACIA
+  INGENIERO_ML
+}
+
+PantallaAlertasPriorizadas --> ControlConsultaAlertas
+ControlConsultaAlertas --> CentroSalud
+ControlConsultaAlertas --> AlertaDesabastecimiento
+ControlConsultaAlertas --> PrediccionRiesgo
+ControlConsultaAlertas --> InventarioActual
+ControlConsultaAlertas --> Medicamento
+ControlConsultaAlertas --> FiltrosAlerta
+ControlConsultaAlertas --> Usuario
+AlertaDesabastecimiento --> NivelAlerta
+AlertaDesabastecimiento --> EstadoAlerta
+Usuario --> RolUsuario
+
+note bottom
+  Las operaciones corresponden a los mensajes de DS-CU04-01
+  y DCOL-CU04-01. Las entidades no dependen de la interfaz.
+end note
+@enduml

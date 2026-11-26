@@ -1,0 +1,52 @@
+@startuml logical-view
+title Vista lógica — DeepPharma
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+package "Presentación" {
+  [Dashboard]
+  [API]
+}
+
+package "Aplicación" {
+  [Casos de uso]
+  [Autorización]
+  [Orquestación de tareas]
+}
+
+package "Dominio" {
+  [Inventario]
+  [Predicciones]
+  [Alertas]
+  [Reportes]
+  [Modelos y experimentos]
+}
+
+package "Infraestructura" {
+  [Persistencia]
+  [Adaptador SALMI]
+  [Adaptador Portal Datos]
+  [Servicio Notificaciones]
+  [Almacenamiento de modelos]
+}
+
+[Dashboard] --> [API]
+[API] --> [Casos de uso]
+[Casos de uso] --> [Autorización]
+[Casos de uso] --> [Orquestación de tareas]
+[Casos de uso] --> [Inventario]
+[Casos de uso] --> [Predicciones]
+[Casos de uso] --> [Alertas]
+[Casos de uso] --> [Reportes]
+[Casos de uso] --> [Modelos y experimentos]
+[Inventario] --> [Persistencia]
+[Predicciones] --> [Persistencia]
+[Alertas] --> [Persistencia]
+[Reportes] --> [Persistencia]
+[Modelos y experimentos] --> [Almacenamiento de modelos]
+[Inventario] ..> [Adaptador SALMI]
+[Inventario] ..> [Adaptador Portal Datos]
+[Alertas] ..> [Servicio Notificaciones]
+
+@enduml

@@ -1,0 +1,103 @@
+@startuml UC-SYSTEM-PROPOSED-02
+title UC-SYSTEM-PROPOSED-02 — Modelo general de casos de uso de DeepPharma
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "ACT-01\nAdministrador del sistema" as ACT01
+actor "ACT-02\nFarmacéutico" as ACT02
+actor "ACT-03\nIngeniero de ML" as ACT03
+actor "ACT-05\nAdministrador de farmacia" as ACT05
+actor "EXT-01\nSALMI / fuente externa" as EXT01
+actor "EXT-02\nPortal de Datos Abiertos" as EXT02
+actor "EXT-03\nServicio de notificaciones" as EXT03
+
+rectangle "Sistema DeepPharma" {
+  package "Gestión de datos" {
+    usecase "CU-01\nRegistrar datos históricos" as CU01
+    usecase "CU-07\nValidar datos de inventario" as CU07
+    usecase "CU-08\nPreprocesar datos históricos" as CU08
+    usecase "CU-09\nSincronizar inventario\ncon fuente externa" as CU09
+  }
+
+  package "Machine Learning" {
+    usecase "CU-02\nEntrenar y evaluar\nmodelos de ML" as CU02
+    usecase "CU-03\nGenerar predicciones\nde riesgo" as CU03
+    usecase "CU-10\nEvaluar modelos\npredictivos" as CU10
+    usecase "CU-11\nRegistrar modelo\naprobado" as CU11
+    usecase "CU-12\nConsultar explicación\nde predicción" as CU12
+  }
+
+  package "Inventario y alertas" {
+    usecase "CU-04\nVisualizar y gestionar\nalertas priorizadas" as CU04
+    usecase "CU-05\nGestionar inventario\nen tiempo real" as CU05
+    usecase "CU-13\nConsultar inventario\nactual" as CU13
+    usecase "CU-14\nConsultar detalle\nde alerta" as CU14
+    usecase "CU-15\nReconocer o gestionar\nuna alerta" as CU15
+    usecase "CU-16\nNotificar riesgo\ncrítico" as CU16
+    usecase "CU-17\nGenerar reportes de\ninventario y riesgo" as CU17
+  }
+
+  package "Administración" {
+    usecase "CU-18\nAdministrar usuarios\ny roles" as CU18
+    usecase "CU-19\nConfigurar fuentes\ne integraciones" as CU19
+  }
+}
+
+ACT01 -- CU01
+ACT01 -- CU03
+ACT01 -- CU04
+ACT01 -- CU05
+ACT01 -- CU17
+ACT01 -- CU18
+ACT01 -- CU19
+
+ACT02 -- CU03
+ACT02 -- CU04
+ACT02 -- CU05
+ACT02 -- CU13
+ACT02 -- CU14
+ACT02 -- CU15
+ACT02 -- CU17
+ACT02 -- CU12
+
+ACT03 -- CU01
+ACT03 -- CU02
+ACT03 -- CU03
+ACT03 -- CU07
+ACT03 -- CU08
+ACT03 -- CU10
+ACT03 -- CU11
+ACT03 -- CU12
+
+ACT05 -- CU04
+ACT05 -- CU05
+ACT05 -- CU13
+ACT05 -- CU14
+ACT05 -- CU15
+ACT05 -- CU17
+
+EXT01 -- CU09
+EXT02 -- CU01
+EXT03 -- CU16
+
+CU01 ..> CU07 : <<include>>
+CU01 ..> CU08 : <<include>>\nsi se prepara
+CU02 ..> CU10 : <<include>>
+CU02 ..> CU11 : <<include>>\nsi se aprueba
+CU03 ..> CU16 : <<extend>>\ncondición crítica
+CU04 ..> CU14 : <<include>>\nseleccionar alerta
+CU04 ..> CU15 : <<extend>>\ngestionar alerta
+CU04 ..> CU17 : <<extend>>\nsolicitar reporte
+CU05 ..> CU13 : <<include>>\nconsultar estado
+CU09 ..> CU07 : <<include>>
+CU14 ..> CU12 : <<extend>>\nsolicitar explicación
+
+note bottom
+  CU-06 SUS se documenta como caso de uso académico de validación externa.
+  No forma parte del límite funcional operativo de este diagrama.
+  La ejecución programada de CU-03 es comportamiento interno, no actor.
+  Las relaciones son preliminares y se congelarán después de revisar especificaciones.
+end note
+@enduml

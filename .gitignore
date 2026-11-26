@@ -1,0 +1,14 @@
+apps/api/.venv/
+apps/api/*.db
+apps/web/.next/
+apps/web/node_modules/
+
+# Local and generated development state
+__pycache__/
+.pytest_cache/
+.opencode/
+.reports/review/
+
+# Local academic source material is referenced by the source register but is
+# not redistributed as part of the repository.
+docs/academic_docs/

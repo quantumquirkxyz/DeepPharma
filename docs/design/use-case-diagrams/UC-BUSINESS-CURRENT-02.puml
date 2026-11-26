@@ -1,0 +1,60 @@
+@startuml UC-BUSINESS-CURRENT-02
+title UC-BUSINESS-CURRENT-02 — Modelo hipotético del negocio actual
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "ACT-B01\nFarmacéutico" as B01
+actor "ACT-B02\nAdministrador de farmacia" as B02
+actor "ACT-B03\nAlmacén central" as B03
+actor "ACT-B04\nCompras / proveedor" as B04
+actor "ACT-B05\nPaciente afectado" as B05
+actor "EXT-B01\nSistema existente\n(SALMI u otro)" as EB01
+
+rectangle "Proceso actual hipotético de gestión de medicamentos" {
+  usecase "BIZ-01\nRegistrar o consultar\nexistencias" as BIZ01
+  usecase "BIZ-02\nDetectar necesidad\nde reposición" as BIZ02
+  usecase "BIZ-03\nSolicitar reposición" as BIZ03
+  usecase "BIZ-04\nProcesar reposición" as BIZ04
+  usecase "BIZ-05\nRecibir y registrar\nmedicamentos" as BIZ05
+  usecase "BIZ-06\nAtender situación de\nmedicamento agotado" as BIZ06
+}
+
+B01 -- BIZ01
+B02 -- BIZ01
+EB01 -- BIZ01
+
+B01 -- BIZ02
+B02 -- BIZ02
+BIZ01 ..> BIZ02 : <<include>>\nrevisión de existencias
+
+B01 -- BIZ03
+B02 -- BIZ03
+BIZ02 ..> BIZ03 : <<extend>>\nsi se requiere reposición
+
+B03 -- BIZ04
+B04 -- BIZ04
+BIZ03 ..> BIZ04 : <<include>>\nsi se acepta solicitud
+
+B03 -- BIZ05
+B01 -- BIZ05
+BIZ04 ..> BIZ05 : <<include>>\nsi se entrega reposición
+
+B05 -- BIZ06
+B01 -- BIZ06
+BIZ02 ..> BIZ06 : <<extend>>\nsi no hay disponibilidad
+
+note right of BIZ01
+  ASM-01: el farmacéutico registra o consulta existencias.
+  ASM-05: SALMI u otro sistema puede apoyar el registro.
+end note
+
+note bottom
+  Modelo hipotético académico provisional.
+  ASM-01 a ASM-06 están documentados en
+  docs/analysis/current-process-audit.md.
+  No representa el proceso institucional confirmado.
+  Las relaciones deben validarse antes de usarse como fuente de requisitos.
+end note
+@enduml
