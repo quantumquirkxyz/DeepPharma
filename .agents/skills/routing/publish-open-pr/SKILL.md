@@ -20,6 +20,7 @@ outputs:
     properties:
       status: { type: string, enum: [planned, completed, blocked, needs-approval, outcome-unknown, stale-input, validation-failed, budget-exceeded, repeated-action, superseded, rolled-back] }
       branch: { type: string }
+      commitSha: { type: string, pattern: "^[0-9a-fA-F]{40}$" }
       prNumber: { type: integer }
       prUrl: { type: string }
       title: { type: string }
@@ -40,6 +41,9 @@ outputs:
 sideEffects:
   - push-branch
   - create-pull-request
+capabilityRequirements:
+  - engineering-preflight (required for software publication)
+  - testing (required for validation evidence)
 dependencies: []
 stopCondition: Use when the user wants to publish a finished subissue as an open GitHub pull request from an already-prepared issue branch complete; structured result returned; completion criteria checked.
 risk: medium
@@ -57,10 +61,10 @@ diataxis: how-to
 tags: [routing, pr, publication, quality-gate]
 compatibility: [review-pr, ship-subissue]
 approvalRequired: true
-approvalFor: ["push-branch", "create-pull-request"]
+approvalFor: []
 clauses:
   - id: PUBLISH-OPEN-PR-1
-    text: "Never open a PR before gate-ci has passed on the pushed branch; stop and report the failure instead."
+    text: "Never open a PR before every mandatory gate has passed on the exact pushed commit; skipped, blocked, partial, and unknown outcomes prevent publication."
     check: "evals/behavioral/publish-open-pr.json#PUBLISH-OPEN-PR-1"
   - id: PUBLISH-OPEN-PR-2
     text: "Never create or amend commits here, and never merge the PR or close the issue; those belong to implement and ship-subissue."
@@ -79,15 +83,18 @@ reloadPolicy: always
 - Input: validated issue branch, linked issue metadata, PR bundle metadata, and quality gate results.
 - Output: `PublishOpenPrArtifact` as structured output in the response. See `.agents/skills/platform/schemas/publish-open-pr-schema.json`.
 - Scope: package, push, and publish a completed branch as an open PR; do not reopen implementation decisions.
-- Rule: never open a PR before `gate-ci` has passed on the pushed branch.
+- Rule: never open a PR before every mandatory gate has passed on the exact pushed commit.
+- Rule: a real 40-character commit SHA is required; null, placeholder, invented, and stale SHAs are invalid.
+- Rule: read the linked issue before changing files and reject files outside its declared scope or non-goals.
+- Rule: push and PR creation run automatically after validating the exact commit SHA and required gates immediately before publication.
 - Rule: never create or amend commits here; that belongs to `implement`.
 - Rule: never merge the PR or close the issue here; that belongs to `ship-subissue`.
 - Rule: the linked issue's complete metadata is the source of truth: identity, assignees, reviewer policy, labels (including state/triage classification), milestone, projects and item IDs, Project V2 fields, development linkage, and relationships.
 - Compatibility: `operationId`, `idempotencyKey`, and `fixedPoint` are optional for legacy callers; supplied values must be echoed in `PublishOpenPrArtifact`.
-- Side effect ownership: this skill owns pushing the prepared branch and creating one open PR; both require explicit approval. It does not own commits, comments, merges, issue closure, or review decisions.
-- Recovery invariant: write `checkpoint` before push, after push, and after PR lookup/create. On an unknown push or PR result, reconcile branch and PR state by branch, head revision, title, linked issue, and idempotency key before any retry. Adopt an existing matching PR; never create a second PR.
-- Retry invariant: reconcile remote state and verify `fixedPoint` (or the prepared branch revision) before retrying. A changed revision returns `stale-input`; a failed gate returns `validation-failed`; an approval absence returns `needs-approval`; a superseded branch returns `superseded`.
-- Saga invariant: use one global `operationId`; checkpoint `planned`, `preflight`, `before-effect`, `after-effect`, and `reconciled` for each effect. `dryRun` may not push or create. Verify branch protection and the fixed-point/revision fence immediately before every effect; push and PR creation have separate approvals.
+- Side effect ownership: this skill owns pushing the prepared branch and creating one open PR automatically within the declared scope. It does not own commits, comments, merges, issue closure, or review decisions.
+- Recovery invariant: write `checkpoint` before push, after push, and after PR lookup/create. On an unknown push or PR result, reconcile branch and PR state by branch, head revision, title, linked issue, and idempotency key before any retry. Adopt an existing matching PR; never create a second PR. Reconcile unknown commit/push outcomes by `operationId`, branch, and exact SHA; never blindly retry.
+- Retry invariant: reconcile remote state and verify `fixedPoint` (or the prepared branch revision) before retrying. A changed revision returns `stale-input`; a failed gate returns `validation-failed`; a superseded branch returns `superseded`.
+- Saga invariant: use one global `operationId`; checkpoint `planned`, `preflight`, `before-effect`, `after-effect`, and `reconciled` for each effect. `dryRun` may not push or create. Verify branch protection and the fixed-point/revision fence immediately before every effect.
 - Unknown/repeat invariant: after crash or unknown outcome, reconcile by operationId plus branch, revision, title, issue, and PR URL/number; adopt one matching remote PR or return `outcome-unknown`. Repeated action returns `repeated-action`; compensation is limited to an operation-owned branch/PR and requires rollback evidence.
 
 ## Provenance
@@ -120,10 +127,11 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 - Confirm `gh` is available and `gh auth status` succeeds.
 - Confirm the current branch can push to `origin`.
 
-### 3. Run gate-ci before opening PR
+### 3. Run mandatory gates before opening PR
 
 - Execute `gate-ci` against the current branch state.
-- If `gate-ci` fails, stop and report the failure rather than opening a PR.
+- If a mandatory gate fails, is skipped, blocked, or has an unknown outcome, stop and report it rather than opening the PR.
+- Record every skipped check and its reason in the artifact and PR body; never convert an unavailable check into `pass`.
 - Summarize the gate-ci result in the PR body or PR metadata; do not write a local gate artifact.
 
 ### 4. Run the smallest relevant validation
@@ -158,7 +166,7 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 
 - branch scope confirmed
 - prerequisites verified
-- `gate-ci` passed on pushed branch
+- all mandatory gates passed on the exact pushed commit
 - validation completed
 - PR bundle prepared from linked issue metadata
 - branch pushed to origin
@@ -181,3 +189,5 @@ Return `PublishOpenPrArtifact` as structured output in the current response. Do 
 ## Release Readiness Boundary
 
 Publication may provide candidate evidence, but `ship-subissue` owns the release-candidate handoff. Preserve fixed point, digest, SBOM/VEX/provenance, owner, approval, rollback, canary/rollout evidence, and next consumer without widening this skill's push/PR side effects.
+
+Publication note: push is a separate approved effect from implementation and commit creation.

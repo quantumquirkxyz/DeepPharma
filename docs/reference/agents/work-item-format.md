@@ -1,64 +1,65 @@
-# Canonical work-item format
+# Work Item Format
 
-## Required fields
+Canonical metadata shape for specs, tickets, and linked PRs.
 
-- Title: concise, imperative and domain-specific.
-- Body: problem, goals, non-goals, acceptance criteria, risks, dependencies,
-  validation commands and traceability.
-- Labels for publishable MVP work items: exactly one workflow label, one
-  work-type label, one discipline label, one priority label and one risk label.
-  Use `risk:unknown` when evaluation is not yet sufficient.
-- The GitHub Project `Status` field mirrors the Issue `status:*` label and is
-  not an independent workflow source of truth.
-- Issues and PRs carry the canonical labels; the Project's native Labels field
-  projects them. Priority and Risk remain labels, not duplicate Project fields.
-- Parent Spec issues use `type:spec`, `area:requirements` and `status:ready`
-  only after acceptance criteria are reviewable.
-- Sub-Spec issues use `type:sub-spec`, `area:requirements` and a valid
-  `status:*`; they remain children of a Parent Spec.
-- Other documentation issues use `type:documentation`.
+## Metadata
 
-## Ticket requirements
+Every tracker-backed work item may carry these native GitHub properties:
 
-Every implementation ticket must include:
+- `assignees` — GitHub logins assigned to the issue.
+- `labels` — repository labels.
+- `milestone` — milestone title or `null`.
+- `projects` — GitHub Projects titles the issue belongs to.
+- `relationships.parent` — parent issue number.
+- `relationships.subIssues` — child issue numbers.
+- `relationships.blockedBy` — prerequisite issue numbers.
+- `relationships.blocking` — issues this item blocks.
+- `relationships.related` — related issue references; preserve explicitly when no native generic mutation is available.
+- `development.branch` — issue-linked development branch (`name`, optional `base`).
+- `development.pullRequest` — existing PR reference used for verification/handoff.
+- `fields.work_type`
+- `fields.repo_scope`
+- `fields.phase`
+- `fields.priority`
+- `fields.risk`
+- `fields.sprint`
+- `fields.release_train`
+- `todo`
 
-1. parent spec issue;
-2. requirements and acceptance criteria;
-3. explicit seams;
-4. blocking and blocked-by edges;
-5. files or modules in scope;
-6. tests and evidence required;
-7. non-goals and residual risks.
+The machine-readable contract is `.agents/skills/platform/schemas/work-item-metadata.schema.json`.
 
-The initial MVP hierarchy requires native sub-issues for Parent
-Spec → Sub-Spec → Ticket relationships. A task list is not an equivalent
-substitute.
+## GitHub surface mapping
 
-The Parent Spec, Sub-Specs, and Tickets in one delivery share the same
-Milestone; the Milestone groups delivery and does not replace parent-child
-relationships.
+| GitHub issue surface | Canonical property | Mutation path |
+|---|---|---|
+| Assignees | `assignees[]` | `gh issue edit --add-assignee` |
+| Labels | `labels[]` | `gh issue edit --add-label` |
+| Projects | `projects[]` | `gh issue edit --add-project` |
+| Milestone | `milestone` | `gh issue edit --milestone` |
+| Relationships: parent/sub-issues | `relationships.parent/subIssues` | `gh issue edit --parent/--add-sub-issue` |
+| Relationships: dependencies | `relationships.blockedBy/blocking` | `gh issue edit --add-blocked-by/--add-blocking` |
+| Development branch | `development.branch` | `gh issue develop` |
+| Project V2 custom fields | `fields.*` | `make-project` / Project V2 item-field mutation |
 
-Parent-child hierarchy does not imply blocking. Use native `blocked_by`
-relationships only for real execution prerequisites and repeat them in the
-Issue body.
+GitHub **Views** are project-level configuration, not issue-level metadata. Create or update views through `make-project`; do not pretend a view can be assigned directly to an individual issue.
 
-Implementation delivery uses at most one PR per Ticket, with branch
-`issue/<number>-<slug>` and copied labels/Milestone.
+Existing pull-request linkage and generic “related” relationships must be verified using the supported GitHub surface available to the caller. The metadata applicator never fabricates an unsupported mutation.
 
-Readiness is hierarchical: a Sub-Spec cannot be `status:ready` before its
-Parent Spec, and a Ticket cannot be `status:ready` before its criteria, seam,
-tests, evidence, and blockers are resolved.
+## Rules
 
-For the initial MVP hierarchy, Parent Specs, Sub-Specs, and their Tickets use
-`area:requirements`; the `type:*` label still distinguishes the kind of item.
+- Specs default to `spec` and `ready-for-agent` with `fields.work_type = Epic`.
+- Tickets default to `ready-for-agent` plus justified labels inherited from the source spec or parent issue.
+- Preserve linked issue or PR metadata as the source of truth.
+- Preserve assignee, milestone, project and relationship intent across ticket decomposition unless the user explicitly changes it.
+- Blocking edges in a `TicketArtifact` and GitHub `blocked by` relationships must agree.
+- A development branch is created only after explicit write approval; planning remains dry-run by default.
+- Project V2 fields are applied only after the issue is on the intended project.
+- Do not invent conflicting tracker metadata in downstream comments or handoff notes.
 
-The tracker label contract is defined in
-`docs/adr/ADR-045-contrato-de-labels-por-nivel.md`.
+## Tracker coupling
 
-## State transitions
-
-`status:triage → status:needs-info/status:ready → status:in-progress → status:review → status:done`
-
-Use `status:needs-info` when clarification is required and `status:blocked`
-when a real dependency prevents progress. Both require a reason in the body.
-Use `status:ready` only when the ticket can be implemented without guessing.
+- `to-spec` writes the spec using this shape.
+- `to-tickets` preserves this shape across each ticket and emits blocker relationships.
+- `make-project` owns Project V2 board fields and views.
+- `scripts/apply-issue-metadata.mjs` plans and, with `--write`, applies native issue metadata and issue-linked development branches.
+- `plan-review-fixes` and `implement-review-fixes` keep the same source metadata aligned with review loops.

@@ -1,20 +1,24 @@
-# Domain docs
+# Domain Docs
 
-DeepPharma uses a single-context documentation layout.
+## Layout
 
-## Before exploring
-
-Read `CONTEXT.md` at the repository root and any ADRs in `docs/adr/` that touch the area being changed. If a file is absent, proceed without treating its absence as an error.
-
-## File structure
-
-```text
-/
-├── CONTEXT.md
-├── docs/adr/
-└── src/
+```mermaid
+flowchart TD
+    A[Repo root] --> B[CONTEXT.md]
+    A --> C[docs/adr/]
+    C --> D[ADR files]
+    B --> E[Primary durable context]
+    D --> F[Architectural decisions]
+    E --> G[Domain vocabulary]
+    F --> G
 ```
 
-Use the vocabulary defined by `CONTEXT.md` in issue titles, proposals, refactors, and tests. If a needed concept is not defined there, record the gap for domain modeling rather than silently inventing terminology.
+## Consumer rules
 
-If a proposed change conflicts with an existing ADR, surface the conflict explicitly instead of overriding it silently.
+- Keep `CONTEXT.md` at the repo root as the primary durable context file.
+- Keep ADRs under `docs/adr/`; a consuming repository starts from the template at `docs/reference/adr/README.md`.
+- Read durable docs before tactical ticket or implementation details when a skill depends on project vocabulary.
+
+## Notes
+
+- This repo currently uses a single repository context rather than multiple context partitions.
