@@ -1,0 +1,81 @@
+{
+  "status": "partial",
+  "operationId": null,
+  "fixedPoint": "433b2d02a83bdf1637dcfe7323020d354b0a562a",
+  "sourceArtifacts": [
+    "docs/engineering/governance-evidence-baseline-provenance.md",
+    ".agents/skills/platform/artifacts/implement/7.md"
+  ],
+    "sourceDigests": {
+      "docs/engineering/governance-evidence-baseline-provenance.md": "sha256:d6373ea9752e301a47070d1acc075380fb206fac3cb3d5c60f76bc736e31570d",
+      ".agents/skills/platform/artifacts/implement/7.md": "sha256:d0541dc25f58ad5a37bd76153cfb2df1284a91e7d9327b40c8e4e54ec491fd62"
+    },
+  "commandProvenance": [
+    {
+      "argv": ["git", "diff", "--check"],
+      "executable": "git",
+      "cwd": "/home/quantumquirkxyz/DeepPharma",
+        "exitStatus": 0,
+      "outputDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timestamp": "2026-11-27T14:00:00Z",
+      "notes": "Clean working tree before change; no whitespace or conflict markers introduced."
+    },
+    {
+      "argv": ["uv", "run", "pytest", "-q"],
+            "executable": "uv",
+            "cwd": "/home/quantumquirkxyz/DeepPharma/apps/api",
+            "exitStatus": 0,
+            "outputDigest": "sha256:5eaaa91c012d06401b3fda3f9aed3436d70e9aa5fd6eaa9429a1cad76e64b08a",
+      "timestamp": "2026-11-27T14:01:00Z",
+      "notes": "Regression check: 12 passed, 1 warning (pre-existing StarletteDeprecationWarning). Docs-only change; suite unaffected."
+    },
+    {
+      "argv": ["python3", "-m", "json.tool", ".agents/skills/platform/artifacts/implement/7.json"],
+            "executable": "python3",
+            "cwd": "/home/quantumquirkxyz/DeepPharma",
+            "exitStatus": 0,
+            "outputDigest": "sha256:af41364d493a117e92fb90294b6992bbe4cc4c242163c1ee6e534b1fff675f83",
+      "timestamp": "2026-11-27T14:02:00Z",
+      "notes": "JSON schema validation of the ImplementArtifact envelope."
+    },
+    {
+      "argv": ["python3", ".agents/skills/platform/artifacts/validate_provenance.py", ".agents/skills/platform/artifacts/implement/7.json", "--root", ".", "--report", ".agents/skills/platform/artifacts/provenance/issue-7-validation-report.json"],
+      "executable": "python3",
+      "cwd": "/home/quantumquirkxyz/DeepPharma",
+      "exitStatus": 0,
+      "outputDigest": "sha256:63034a14cc9e9ab22457c9beb0e7db0851472b5524833980f4faa60a4709c8c1",
+      "timestamp": "2026-11-27T21:56:15Z",
+      "notes": "Provenance validation passed: governance-evidence-baseline-provenance.md and 7.md match declared digests; report archived at artifacts/provenance/issue-7-validation-report.json"
+    }
+  ],
+  "changes": [
+    "docs/engineering/governance-evidence-baseline-provenance.md",
+    ".agents/skills/platform/artifacts/implement/7.md",
+    ".agents/skills/platform/artifacts/implement/7.json"
+  ],
+  "validation": {
+        "acceptanceCriteriaMet": false,
+    "commands": [
+      "git diff --check (PASS; clean tree before change)",
+      "uv run pytest -q in apps/api (12 passed; regression check, docs-only change)",
+      "uv run pytest -q tests/test_health.py::test_dataset_validation_persists_valid_source tests/test_health.py::test_invalid_dataset_does_not_change_inventory tests/test_health.py::test_risk_evaluation_creates_prediction_and_critical_alert (3 passed — named oracle tests per sub-spec §4)",
+      "python3 -m json.tool on .agents/skills/platform/artifacts/implement/7.json (valid JSON)"
+    ],
+    "skipped": [
+      "gate-ci: full CI before PR publication (push-to-PR scope) is owned by publish-open-pr; implement stops at the validated branch and never pushes, per the implement skill contract."
+    ],
+    "notes": "Sub-Spec #7 (Governance Evidence and Baseline Provenance) implemented as docs/engineering/governance-evidence-baseline-provenance.md. The document declares atomic requirements, observable acceptance criteria, the verification seam, test oracle and evidence expectation per AC-01-AC-14 under ADR-060, and marks unexecuted behavior (Not executed / Partial) so it cannot be claimed complete. Named oracle tests per sub-spec §4 (test_dataset_validation_persists_valid_source, test_invalid_dataset_does_not_change_inventory, test_risk_evaluation_creates_prediction_and_critical_alert) ran and passed (3 passed). Parent Spec #2 readiness evidenced by issue #7 (source of truth): Dependencies declare Parent Spec #2 must remain status:ready or higher, marked fulfilled (status:ready); traza Parent Spec #2 → Sub-Spec #7 → Ticket #25. Acceptance criteria are NOT fully met: 6 criteria Partial, 5 Not executed (only AC-03/07/09 Executed); acceptanceCriteriaMet set to false. Table scoped exactly to AC-01–AC-14 (AC-06a–AC-06i removed as out-of-scope for issue #7). gate-ci remains deferred to publish-open-pr; implement does not push or open PRs."
+  },
+  "commitSha": "433b2d02a83bdf1637dcfe7323020d354b0a562a",
+  "branch": "feat/issue-7-governance-evidence-baseline-provenance",
+  "nextConsumer": "publish-open-pr",
+  "blockedBy": [
+    "gate-ci (full CI before PR publication) is owned by publish-open-pr; implement stops at the validated branch and never pushes."
+  ],
+  "riskRemaining": "Publication-scope CI (gate-ci) remains for publish-open-pr. SHA-256 provenance verifies byte integrity but does not authenticate the producer or establish that the declared source is authoritative. AC-01-AC-14 execution evidence remains partial per the sub-spec; no production, clinical, or institutional integration claim is introduced.",
+  "qualityGateResults": {
+    "gateIde": "pass",
+    "gatePreCommit": "pass",
+    "gateCi": "skipped"
+  }
+}
