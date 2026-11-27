@@ -10,7 +10,7 @@
   "fixedPoint": "main",
   "revisionFence": {
     "base": "main",
-    "finalHead": "4a51b1c6b099cf72cc58121fef5970a591623791"
+    "finalHead": "06603c01132c700bbd3ca6aaf7f4cc91ee8b4a95"
   },
   "checkpoints": [
     {
@@ -42,7 +42,7 @@
         "standards": 0,
         "spec": 0
       },
-      "reviewHead": "4a51b1c6b099cf72cc58121fef5970a591623791"
+      "reviewHead": "06603c01132c700bbd3ca6aaf7f4cc91ee8b4a95"
     }
   ],
   "progressEvidence": [
