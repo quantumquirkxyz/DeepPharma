@@ -1,5 +1,5 @@
 {
-  "status": "validation-failed",
+  "status": "partial",
   "changes": [
     "Added a dependency-free JSON artifact provenance validator with SHA-256 comparison, path containment checks, and atomic report writing.",
     "Added success and failure tests for digest comparison, missing sources, malformed JSON, and report persistence.",
@@ -20,16 +20,16 @@
     ],
     "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced. This artifact does not claim repository-wide completion."
   },
-  "commitSha": null,
+  "commitSha": "2f1524a461473df0569ed8248681b698e7f841ae",
   "branch": "issue/25-artifact-provenance-validation",
   "nextConsumer": "review-pr",
   "blockedBy": [
-    "Repository-wide check-all unavailable; gateCi is not-run."
+    "Repository-wide check-all unavailable; gateCi is skipped."
   ],
   "riskRemaining": "SHA-256 verifies byte integrity but does not authenticate the producer or establish that the declared source is authoritative. Repository-wide gates retain unrelated baseline failures and must be repaired separately.",
   "qualityGateResults": {
     "gateIde": "pass",
     "gatePreCommit": "pass",
-    "gateCi": "not-run"
+    "gateCi": "skipped"
   }
 }
