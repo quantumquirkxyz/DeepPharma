@@ -21,7 +21,7 @@
     ],
     "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced."
   },
-  "commitSha": "ee73c54",
+  "commitSha": "ee5d2c52dd810f2241ce82ef55da19ca93121d55",
   "branch": "issue/25-artifact-provenance-validation",
   "nextConsumer": "code-review",
   "blockedBy": [],
