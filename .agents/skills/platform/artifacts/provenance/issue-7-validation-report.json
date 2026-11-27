@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "reportType": "artifact-provenance-validation",
-  "generatedAt": "2026-11-27T21:56:29.880010+00:00",
+  "generatedAt": "2026-11-27T22:08:31.079703+00:00",
   "status": "passed",
   "artifact": "/home/quantumquirkxyz/DeepPharma/.agents/skills/platform/artifacts/implement/7.json",
-  "artifactDigest": "sha256:16621ff11d7250f126c0cf98e8730ebde46b02cfde730300da852c3c176b281b",
+  "artifactDigest": "sha256:de2e8978445131326b04dc428023917ecc0cbaefb17b455f9169906be12d4603",
   "checks": [
     {
       "source": "docs/engineering/governance-evidence-baseline-provenance.md",
       "status": "passed",
-      "expected": "sha256:28fbaa20de2b3db3b9f0b1c60af2edcca58df5942e2aef99758737e352a0a924",
-      "actual": "sha256:28fbaa20de2b3db3b9f0b1c60af2edcca58df5942e2aef99758737e352a0a924"
+      "expected": "sha256:d6373ea9752e301a47070d1acc075380fb206fac3cb3d5c60f76bc736e31570d",
+      "actual": "sha256:d6373ea9752e301a47070d1acc075380fb206fac3cb3d5c60f76bc736e31570d"
     },
     {
       "source": ".agents/skills/platform/artifacts/implement/7.md",

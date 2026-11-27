@@ -38,15 +38,6 @@ Cada criterio declara: requisito atómico, seam de verificación, oracle de prue
 | AC-04 | Procedencia, versión y estado de la carga (US-01) | Persistencia `ConjuntoDatos` | `test_dataset_validation_persists_valid_source` | Registro de origen, versión y estado | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
 | AC-05 | Modelo versionado reproducible o fallback determinista (US-02) | `RiskEvaluator` | `test_risk_evaluation_creates_prediction_and_critical_alert` | Predicción y alerta crítica creadas | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
 | AC-06 | Metadatos de predicción y limitaciones (US-02) | `PredictionRead` | Integración de riesgo | Nivel, probabilidad, horizonte, modelo, versión, dataset, limitaciones | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06a | Particiones temporales y métricas ML | `ADR-017`; experiment runner futuro | No ejecutada aún | Métricas de evaluación temporal | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06b | Fallback determinista auditable | `ADR-024`; `baseline-rules-1` | Integración fallback | Registro `FALLBACK_DETERMINISTA`, causa, versión, `traceId` | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06c | Linaje de resultados y recálculo no silencioso | `ADR-025` | No hay prueba de linaje ejecutable aún | Origen, versión, dataset, horizonte, timestamp, `traceId` | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06d | Calidad y monitoreo de deriva | `ADR-026` | No hay prueba de monitoreo ejecutable aún | Fixture con cambio controlado | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06e | Explicación operativa sin causalidad | `ADR-028` | No hay prueba de explicabilidad ejecutable aún | Variables influyentes, limitaciones, origen | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06f | Revisión humana y sin acción automática irreversible | `ADR-029` | No hay prueba de autorización-acción ejecutable aún | Decisión humana auditada | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06g | Auditoría append-only con integridad | Historial de alertas; `ADR-030` | Parcial | Eventos append-only con `traceId` e integridad verificable | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06h | Consulta de auditoría con ámbito y registro de rechazo | `ADR-031` | Parcial | Consulta fuera de ámbito rechazada y registrada | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
-| AC-06i | Kill switch autorizado y fallback seguro | `ADR-035` | No hay prueba ejecutable aún | Desactivación autorizada, fallback o estado seguro, operación registrada | Not executed | `docs/requirements/acceptance-traceability-mvp.md` |
 | AC-07 | Reevaluación no duplica alertas activas (US-03) | Integración de riesgo | `test_risk_evaluation_creates_prediction_and_critical_alert` | Sin duplicación de alertas activas | Executed | `docs/requirements/acceptance-traceability-mvp.md` |
 | AC-08 | Cambios de estado de alerta autorizados (US-03) | `test_token_scopes_follow_user_role` y parche de alerta | Parcial | Solo roles autorizados cambian estados | Partial | `docs/requirements/acceptance-traceability-mvp.md` |
 | AC-09 | Transición: actor, estado previo, nuevo estado, comentario (US-03) | Aserciones de historial en integración de riesgo | Parcial | Transición registrada completamente | Executed | `docs/requirements/acceptance-traceability-mvp.md` |
@@ -76,7 +67,7 @@ Cada criterio declara: requisito atómico, seam de verificación, oracle de prue
 
 ## 6. Traza y dependencias
 
-- Parent Spec #2 debe mantener `status:ready` o superior. (Pendiente de verificar: este diff no enlaza ni comprueba que Parent Spec #2 sea `status:ready`; la aserción no es evidencia verificable.)
+- Parent Spec #2 debe mantener `status:ready` o superior. Evidencia: el issue #7 (fuente de verdad del sub-spec) declara en Dependencies "Parent Spec #2 must remain status:ready or higher" y lo marca como cumplido (status:ready). Traza: Parent Spec #2 → Sub-Spec #7 → Ticket #25 (línea 4).
 - La jerarquía solo no implica bloqueo de ejecución; se requiere un prerequisito de ejecución real para cada criterio.
 - Ticket #25 (artefacto de procedencia) es el consumidor inmediato y ya implementa el validador de seam.
 - ADR-060 registra la excepción temporal de refinamiento automático; este sub-spec la conserva y no la presenta como ejecución exitosa.
