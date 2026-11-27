@@ -1,5 +1,5 @@
 {
-  "status": "planned",
+  "status": "completed",
   "operationId": "review-fix-loop-pr-43-20261127",
   "loopId": "pr-43-review-fix-loop",
   "ledgerRef": "PR-43",
@@ -10,7 +10,7 @@
   "fixedPoint": "main",
   "revisionFence": {
     "base": "main",
-    "finalHead": "c768e951fa39e305d265569999d13055e728e5a5"
+    "finalHead": "4a51b1c6b099cf72cc58121fef5970a591623791"
   },
   "checkpoints": [
     {
@@ -34,6 +34,15 @@
       "state": "verify",
       "pass": 2,
       "reviewId": 6083395951
+    },
+    {
+      "state": "verify",
+      "pass": 3,
+      "findingCount": {
+        "standards": 0,
+        "spec": 0
+      },
+      "reviewHead": "4a51b1c6b099cf72cc58121fef5970a591623791"
     }
   ],
   "progressEvidence": [
@@ -66,8 +75,6 @@
     "repositoryWideCheckAll": "skipped: canonical shared evaluation infrastructure unavailable"
   },
   "deferredFindings": [],
-  "nextConsumer": "implement-review-fixes",
-  "blockers": [
-    "Spec review found incomplete provenance metadata, per-criterion traceability, and an overclaimed completion flag."
-  ]
+  "nextConsumer": "ship-subissue",
+  "blockers": []
 }
