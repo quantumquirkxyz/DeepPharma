@@ -1,10 +1,15 @@
 {
   "status": "partial",
   "operationId": null,
-  "fixedPoint": "7a834d673f5de3a6d4f1d74eadf6228bda32f3ba",
-  "sourceDigests": {
-    "docs/engineering/governance-evidence-baseline-provenance.md": "sha256:d11f75f2512e1819ac31cce7c4d545ed7a6c1b7d0a17ce85dd784ba5ae7d36a6"
-  },
+  "fixedPoint": "d9a0b67110137b1cfd0e47bb3804529fa72bcacb",
+  "sourceArtifacts": [
+    "docs/engineering/governance-evidence-baseline-provenance.md",
+    ".agents/skills/platform/artifacts/implement/7.md"
+  ],
+    "sourceDigests": {
+      "docs/engineering/governance-evidence-baseline-provenance.md": "sha256:28fbaa20de2b3db3b9f0b1c60af2edcca58df5942e2aef99758737e352a0a924",
+      ".agents/skills/platform/artifacts/implement/7.md": "sha256:d0541dc25f58ad5a37bd76153cfb2df1284a91e7d9327b40c8e4e54ec491fd62"
+    },
   "commandProvenance": [
     {
       "argv": ["git", "diff", "--check"],
@@ -32,10 +37,21 @@
             "outputDigest": "sha256:af41364d493a117e92fb90294b6992bbe4cc4c242163c1ee6e534b1fff675f83",
       "timestamp": "2026-11-27T14:02:00Z",
       "notes": "JSON schema validation of the ImplementArtifact envelope."
+    },
+    {
+      "argv": ["python3", ".agents/skills/platform/artifacts/validate_provenance.py", ".agents/skills/platform/artifacts/implement/7.json", "--root", ".", "--report", ".agents/skills/platform/artifacts/provenance/issue-7-validation-report.json"],
+      "executable": "python3",
+      "cwd": "/home/quantumquirkxyz/DeepPharma",
+      "exitStatus": 0,
+      "outputDigest": "sha256:9302998d3a9c342d40a6e930755954ba325c956e9d2177a04be15b02a21d3785",
+      "timestamp": "2026-11-27T21:56:15Z",
+      "notes": "Provenance validation passed: governance-evidence-baseline-provenance.md and 7.md match declared digests; report archived at artifacts/provenance/issue-7-validation-report.json"
     }
   ],
   "changes": [
-    "docs/engineering/governance-evidence-baseline-provenance.md"
+    "docs/engineering/governance-evidence-baseline-provenance.md",
+    ".agents/skills/platform/artifacts/implement/7.md",
+    ".agents/skills/platform/artifacts/implement/7.json"
   ],
   "validation": {
         "acceptanceCriteriaMet": false,
@@ -50,7 +66,7 @@
     ],
     "notes": "Sub-Spec #7 (Governance Evidence and Baseline Provenance) implemented as docs/engineering/governance-evidence-baseline-provenance.md. The document declares atomic requirements, observable acceptance criteria, the verification seam, test oracle and evidence expectation per AC-01-AC-14 under ADR-060, and marks unexecuted behavior (Not executed / Partial) so it cannot be claimed complete. Named oracle tests per sub-spec §4 (test_dataset_validation_persists_valid_source, test_invalid_dataset_does_not_change_inventory, test_risk_evaluation_creates_prediction_and_critical_alert) ran and passed (3 passed). Parent Spec #2 readiness is asserted in the sub-spec but not evidenced in this diff (pending verification). Acceptance criteria are NOT fully met: 9 criteria Partial, 11 Not executed (only AC-03/07/09 Executed); acceptanceCriteriaMet set to false. gate-ci remains deferred to publish-open-pr; implement does not push or open PRs."
   },
-  "commitSha": "7a834d673f5de3a6d4f1d74eadf6228bda32f3ba",
+  "commitSha": "d9a0b67110137b1cfd0e47bb3804529fa72bcacb",
   "branch": "feat/issue-7-governance-evidence-baseline-provenance",
   "nextConsumer": "publish-open-pr",
   "blockedBy": [
