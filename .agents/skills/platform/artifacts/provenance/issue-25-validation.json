@@ -3,7 +3,7 @@
   "artifactType": "artifact-provenance-validation-input",
   "artifactId": "artifact-provenance-issue-25",
   "status": "ready",
-  "fixedPoint": "c768e951fa39e305d265569999d13055e728e5a5",
+  "fixedPoint": "d7eb2ac902e0d8ba2a23ce3f3b389210d793b615",
   "sourceArtifacts": [
     "docs/spec/constitution.md"
   ],
@@ -14,7 +14,7 @@
     {
       "id": "constitution",
       "path": "docs/spec/constitution.md",
-      "fixedPoint": "c768e951fa39e305d265569999d13055e728e5a5",
+      "fixedPoint": "d7eb2ac902e0d8ba2a23ce3f3b389210d793b615",
       "digest": "sha256:a086e6422660f09683e103e07c0e3b40ffbfc624f8addefc8c871db877bd7a1e",
       "approval": {
         "status": "unexecuted",

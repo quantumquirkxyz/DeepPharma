@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
   "reportType": "artifact-provenance-validation",
-  "generatedAt": "2026-11-27T04:19:32.367392+00:00",
+  "generatedAt": "2026-11-27T04:20:16.745692+00:00",
   "status": "passed",
   "artifact": ".agents/skills/platform/artifacts/provenance/issue-25-validation.json",
-  "artifactDigest": "sha256:de0603cdda4f320b3031c1bf6071c89d706a0a6fb4696698ec226ae3d3cb0c5b",
+  "artifactDigest": "sha256:6af6c170d2d6414c109329923a95e709657c04c242a5e9e71aec58024a28cd51",
   "checks": [
     {
       "source": "docs/spec/constitution.md",
