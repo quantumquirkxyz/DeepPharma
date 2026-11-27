@@ -1,0 +1,34 @@
+{
+  "status": "partial",
+  "changes": [
+    "Added a dependency-free JSON artifact provenance validator with SHA-256 comparison, path containment checks, and atomic report writing.",
+    "Added success and failure tests for digest comparison, missing sources, malformed JSON, and report persistence.",
+    "Documented the provenance contract, command usage, traceability, non-goals, and residual risk.",
+    "Archived a passing validation report for the issue-25 evidence artifact."
+  ],
+  "validation": {
+    "acceptanceCriteriaMet": true,
+    "commands": [
+      "python3 -m unittest discover -s .agents/skills/platform/artifacts -p 'test_*.py' -v",
+      "python3 -m py_compile .agents/skills/platform/artifacts/validate_provenance.py",
+      "python3 -m json.tool .agents/skills/platform/artifacts/provenance/issue-25-validation.json",
+      "python3 .agents/skills/platform/artifacts/validate_provenance.py .agents/skills/platform/artifacts/provenance/issue-25-validation.json --root . --report .agents/skills/platform/artifacts/provenance/issue-25-validation-report.json",
+      "git diff --check"
+    ],
+    "skipped": [
+      "The repository-wide Node test suite was executed but cannot pass on the current base because pre-existing evals/harness and evals/behavioral files are absent.",
+      "The repository-wide docs-links gate was executed but reports pre-existing broken links outside this slice."
+    ],
+    "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced."
+  },
+  "commitSha": "ee73c54",
+  "branch": "issue/25-artifact-provenance-validation",
+  "nextConsumer": "code-review",
+  "blockedBy": [],
+  "riskRemaining": "SHA-256 verifies byte integrity but does not authenticate the producer or establish that the declared source is authoritative. Repository-wide gates retain unrelated baseline failures and must be repaired separately.",
+  "qualityGateResults": {
+    "gateIde": "pass",
+    "gatePreCommit": "pass",
+    "gateCi": "fail"
+  }
+}

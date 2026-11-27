@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "artifact-provenance-validation-input",
+  "artifactId": "artifact-provenance-issue-25",
+  "status": "ready",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md"
+  ],
+  "sourceDigests": {
+    "docs/spec/constitution.md": "sha256:a086e6422660f09683e103e07c0e3b40ffbfc624f8addefc8c871db877bd7a1e"
+  },
+  "traceability": {
+    "parentSpec": "#2",
+    "subSpec": "#7",
+    "ticket": "#25",
+    "criteria": "AC-01–AC-14"
+  },
+  "nonGoals": [
+    "Production certification",
+    "Clinical validity",
+    "Institutional integration"
+  ]
+}
