@@ -7,7 +7,7 @@
     "Archived a passing validation report for the issue-25 evidence artifact."
   ],
   "validation": {
-    "acceptanceCriteriaMet": true,
+    "acceptanceCriteriaMet": false,
     "commands": [
       "python3 -m unittest discover -s .agents/skills/platform/artifacts -p 'test_*.py' -v",
       "python3 -m py_compile .agents/skills/platform/artifacts/validate_provenance.py",
@@ -18,7 +18,7 @@
     "skipped": [
       "The repository-wide check-all remains unavailable because the checkout lacks the canonical shared evaluation infrastructure."
     ],
-    "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced. This artifact does not claim repository-wide completion."
+    "notes": "The scoped validator path and failure path pass, but AC-01–AC-14 remain unexecuted and are represented as such in the provenance artifact. No production, clinical, or institutional integration claim is introduced."
   },
   "commitSha": "2f1524a461473df0569ed8248681b698e7f841ae",
   "branch": "issue/25-artifact-provenance-validation",

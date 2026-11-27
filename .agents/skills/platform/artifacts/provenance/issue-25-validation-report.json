@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
   "reportType": "artifact-provenance-validation",
-  "generatedAt": "2026-11-27T03:50:55.350644+00:00",
+  "generatedAt": "2026-11-27T04:19:32.367392+00:00",
   "status": "passed",
   "artifact": ".agents/skills/platform/artifacts/provenance/issue-25-validation.json",
-  "artifactDigest": "sha256:2203988c11bf06bdfab3a86e58cc9c411ce764d9e6b0516bdb75d9a5ba2e41e5",
+  "artifactDigest": "sha256:de0603cdda4f320b3031c1bf6071c89d706a0a6fb4696698ec226ae3d3cb0c5b",
   "checks": [
     {
       "source": "docs/spec/constitution.md",
@@ -14,5 +14,5 @@
     }
   ],
   "errors": [],
-  "root": "/workspace/scratch/9eca9c391b5f/deep-pharma"
+  "root": "/tmp/opencode/deep-pharma-pr43-20261126"
 }
