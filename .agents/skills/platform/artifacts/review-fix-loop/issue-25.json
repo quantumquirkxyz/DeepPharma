@@ -1,0 +1,80 @@
+{
+  "status": "completed",
+  "operationId": "review-fix-loop-pr-43-20261127",
+  "loopId": "pr-43-review-fix-loop",
+  "ledgerRef": "PR-43",
+  "budget": {
+    "maxIterations": 6,
+    "passesUsed": 2
+  },
+  "fixedPoint": "main",
+  "revisionFence": {
+    "base": "main",
+    "finalHead": "06603c01132c700bbd3ca6aaf7f4cc91ee8b4a95"
+  },
+  "checkpoints": [
+    {
+      "state": "review",
+      "pass": 1,
+      "findingCount": {
+        "standards": 1,
+        "spec": 1
+      },
+      "reviewId": 6083267831
+    },
+    {
+      "state": "plan-fixes",
+      "planCommentId": 7209564725
+    },
+    {
+      "state": "implement-fixes",
+      "implementationCommentIds": [7209577999, 7209585312]
+    },
+    {
+      "state": "verify",
+      "pass": 2,
+      "reviewId": 6083395951
+    },
+    {
+      "state": "verify",
+      "pass": 3,
+      "findingCount": {
+        "standards": 0,
+        "spec": 0
+      },
+      "reviewHead": "06603c01132c700bbd3ca6aaf7f4cc91ee8b4a95"
+    }
+  ],
+  "progressEvidence": [
+    "The implementation artifact now uses status partial and gateCi skipped.",
+    "The out-of-scope root-level evidence test was removed.",
+    "Scoped validation passed: five Python tests, compilation, JSON parsing, and git diff check."
+  ],
+  "recoveryPolicy": "Reconcile PR head and review comments by operationId before retrying; do not duplicate plans or effects.",
+  "saga": {
+    "dryRun": false,
+    "fixedPoint": "main",
+    "revisionFence": "a8ade3aba0da77f66ee7328a31d8b5450323146c",
+    "approvals": {
+      "writeCode": true,
+      "postPrComment": true,
+      "commitGit": true,
+      "pushBranch": true
+    },
+    "rollbackEvidence": []
+  },
+  "validation": {
+    "standardsFindings": 0,
+    "specFindings": 0,
+    "scopedChecks": [
+      "python3 -m unittest discover -s .agents/skills/platform/artifacts -p 'test_*.py'",
+      "python3 -m py_compile .agents/skills/platform/artifacts/validate_provenance.py",
+      "python3 -m json.tool .agents/skills/platform/artifacts/provenance/issue-25-validation.json",
+      "git diff --check"
+    ],
+    "repositoryWideCheckAll": "skipped: canonical shared evaluation infrastructure unavailable"
+  },
+  "deferredFindings": [],
+  "nextConsumer": "ship-subissue",
+  "blockers": []
+}

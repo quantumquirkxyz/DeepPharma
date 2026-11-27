@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "artifact-provenance-validation-input",
+  "artifactId": "artifact-provenance-issue-25",
+  "status": "ready",
+  "fixedPoint": "d7eb2ac902e0d8ba2a23ce3f3b389210d793b615",
+  "sourceArtifacts": [
+    "docs/spec/constitution.md"
+  ],
+  "sourceDigests": {
+    "docs/spec/constitution.md": "sha256:a086e6422660f09683e103e07c0e3b40ffbfc624f8addefc8c871db877bd7a1e"
+  },
+  "sourceRecords": [
+    {
+      "id": "constitution",
+      "path": "docs/spec/constitution.md",
+      "fixedPoint": "d7eb2ac902e0d8ba2a23ce3f3b389210d793b615",
+      "digest": "sha256:a086e6422660f09683e103e07c0e3b40ffbfc624f8addefc8c871db877bd7a1e",
+      "approval": {
+        "status": "unexecuted",
+        "record": null
+      }
+    }
+  ],
+  "traceability": {
+    "parentSpec": "#2",
+    "subSpec": "#7",
+    "ticket": "#25",
+    "criteria": [
+      {
+        "id": "AC-01",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate stable ID, fixed point, digest, and approval record fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-02",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-03",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-04",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-05",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-06",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-07",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-08",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-09",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-10",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-11",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-12",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-13",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      },
+      {
+        "id": "AC-14",
+        "owner": "DeepPharma delivery owner",
+        "status": "unexecuted",
+        "plannedVerification": "Validate per-criterion traceability fields",
+        "evidence": null
+      }
+    ]
+  },
+  "nonGoals": [
+    "Production certification",
+    "Clinical validity",
+    "Institutional integration"
+  ]
+}
