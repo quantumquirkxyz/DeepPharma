@@ -1,7 +1,7 @@
 {
   "status": "partial",
   "operationId": null,
-  "fixedPoint": "d9a0b67110137b1cfd0e47bb3804529fa72bcacb",
+  "fixedPoint": "d0975585f1265d2c69b14f6fc78c7e9da6c1a1dc",
   "sourceArtifacts": [
     "docs/engineering/governance-evidence-baseline-provenance.md",
     ".agents/skills/platform/artifacts/implement/7.md"
@@ -66,7 +66,7 @@
     ],
     "notes": "Sub-Spec #7 (Governance Evidence and Baseline Provenance) implemented as docs/engineering/governance-evidence-baseline-provenance.md. The document declares atomic requirements, observable acceptance criteria, the verification seam, test oracle and evidence expectation per AC-01-AC-14 under ADR-060, and marks unexecuted behavior (Not executed / Partial) so it cannot be claimed complete. Named oracle tests per sub-spec §4 (test_dataset_validation_persists_valid_source, test_invalid_dataset_does_not_change_inventory, test_risk_evaluation_creates_prediction_and_critical_alert) ran and passed (3 passed). Parent Spec #2 readiness is asserted in the sub-spec but not evidenced in this diff (pending verification). Acceptance criteria are NOT fully met: 9 criteria Partial, 11 Not executed (only AC-03/07/09 Executed); acceptanceCriteriaMet set to false. gate-ci remains deferred to publish-open-pr; implement does not push or open PRs."
   },
-  "commitSha": "d9a0b67110137b1cfd0e47bb3804529fa72bcacb",
+  "commitSha": "d0975585f1265d2c69b14f6fc78c7e9da6c1a1dc",
   "branch": "feat/issue-7-governance-evidence-baseline-provenance",
   "nextConsumer": "publish-open-pr",
   "blockedBy": [
