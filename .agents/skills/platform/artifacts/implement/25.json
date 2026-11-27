@@ -1,5 +1,5 @@
 {
-  "status": "completed",
+  "status": "validation-failed",
   "changes": [
     "Added a dependency-free JSON artifact provenance validator with SHA-256 comparison, path containment checks, and atomic report writing.",
     "Added success and failure tests for digest comparison, missing sources, malformed JSON, and report persistence.",
@@ -13,22 +13,23 @@
       "python3 -m py_compile .agents/skills/platform/artifacts/validate_provenance.py",
       "python3 -m json.tool .agents/skills/platform/artifacts/provenance/issue-25-validation.json",
       "python3 .agents/skills/platform/artifacts/validate_provenance.py .agents/skills/platform/artifacts/provenance/issue-25-validation.json --root . --report .agents/skills/platform/artifacts/provenance/issue-25-validation-report.json",
-      "node --test tests/artifact-provenance-evidence.test.mjs",
       "git diff --check"
     ],
     "skipped": [
-      "The repository-wide check-all remains a separate baseline migration because the checkout lacks the canonical shared evaluation infrastructure; it is not used as the scoped gate for this ticket."
+      "The repository-wide check-all remains unavailable because the checkout lacks the canonical shared evaluation infrastructure."
     ],
-    "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced."
+    "notes": "The scoped acceptance path and failure path pass. The report records a matching expected and actual SHA-256 digest. No production, clinical, or institutional integration claim is introduced. This artifact does not claim repository-wide completion."
   },
-  "commitSha": "ee5d2c52dd810f2241ce82ef55da19ca93121d55",
+  "commitSha": null,
   "branch": "issue/25-artifact-provenance-validation",
-  "nextConsumer": "code-review",
-  "blockedBy": [],
+  "nextConsumer": "review-pr",
+  "blockedBy": [
+    "Repository-wide check-all unavailable; gateCi is not-run."
+  ],
   "riskRemaining": "SHA-256 verifies byte integrity but does not authenticate the producer or establish that the declared source is authoritative. Repository-wide gates retain unrelated baseline failures and must be repaired separately.",
   "qualityGateResults": {
     "gateIde": "pass",
     "gatePreCommit": "pass",
-    "gateCi": "pass"
+    "gateCi": "not-run"
   }
 }
