@@ -76,7 +76,7 @@ Cada criterio declara: requisito atómico, seam de verificación, oracle de prue
 
 ## 6. Traza y dependencias
 
-- Parent Spec #2 debe mantener `status:ready` o superior. (Cumplido: `status:ready`.)
+- Parent Spec #2 debe mantener `status:ready` o superior. (Pendiente de verificar: este diff no enlaza ni comprueba que Parent Spec #2 sea `status:ready`; la aserción no es evidencia verificable.)
 - La jerarquía solo no implica bloqueo de ejecución; se requiere un prerequisito de ejecución real para cada criterio.
 - Ticket #25 (artefacto de procedencia) es el consumidor inmediato y ya implementa el validador de seam.
 - ADR-060 registra la excepción temporal de refinamiento automático; este sub-spec la conserva y no la presenta como ejecución exitosa.

@@ -17,19 +17,19 @@
     },
     {
       "argv": ["uv", "run", "pytest", "-q"],
-      "executable": "uv",
-      "cwd": "/home/quantumquirkxyz/DeepPharma/apps/api",
-      "exitStatus": 0,
-      "outputDigest": "sha256:placeholder",
+            "executable": "uv",
+            "cwd": "/home/quantumquirkxyz/DeepPharma/apps/api",
+            "exitStatus": 0,
+            "outputDigest": "sha256:5eaaa91c012d06401b3fda3f9aed3436d70e9aa5fd6eaa9429a1cad76e64b08a",
       "timestamp": "2026-11-27T14:01:00Z",
       "notes": "Regression check: 12 passed, 1 warning (pre-existing StarletteDeprecationWarning). Docs-only change; suite unaffected."
     },
     {
       "argv": ["python3", "-m", "json.tool", ".agents/skills/platform/artifacts/implement/7.json"],
-      "executable": "python3",
-      "cwd": "/home/quantumquirkxyz/DeepPharma",
-      "exitStatus": 0,
-      "outputDigest": "sha256:placeholder",
+            "executable": "python3",
+            "cwd": "/home/quantumquirkxyz/DeepPharma",
+            "exitStatus": 0,
+            "outputDigest": "sha256:af41364d493a117e92fb90294b6992bbe4cc4c242163c1ee6e534b1fff675f83",
       "timestamp": "2026-11-27T14:02:00Z",
       "notes": "JSON schema validation of the ImplementArtifact envelope."
     }
@@ -38,16 +38,17 @@
     "docs/engineering/governance-evidence-baseline-provenance.md"
   ],
   "validation": {
-    "acceptanceCriteriaMet": true,
+        "acceptanceCriteriaMet": false,
     "commands": [
       "git diff --check (PASS; clean tree before change)",
       "uv run pytest -q in apps/api (12 passed; regression check, docs-only change)",
+      "uv run pytest -q tests/test_health.py::test_dataset_validation_persists_valid_source tests/test_health.py::test_invalid_dataset_does_not_change_inventory tests/test_health.py::test_risk_evaluation_creates_prediction_and_critical_alert (3 passed — named oracle tests per sub-spec §4)",
       "python3 -m json.tool on .agents/skills/platform/artifacts/implement/7.json (valid JSON)"
     ],
     "skipped": [
       "gate-ci: full CI before PR publication (push-to-PR scope) is owned by publish-open-pr; implement stops at the validated branch and never pushes, per the implement skill contract."
     ],
-    "notes": "Sub-Spec #7 (Governance Evidence and Baseline Provenance) implemented as docs/engineering/governance-evidence-baseline-provenance.md. The document declares atomic requirements, observable acceptance criteria, the verification seam, test oracle and evidence expectation per AC-01-AC-14 under ADR-060, and marks unexecuted behavior (Not executed / Partial) so it cannot be claimed complete. Parent Spec #2 is status:ready (unblocked). Acceptance criteria of this sub-spec are met. gate-ci remains deferred to publish-open-pr; implement does not push or open PRs."
+    "notes": "Sub-Spec #7 (Governance Evidence and Baseline Provenance) implemented as docs/engineering/governance-evidence-baseline-provenance.md. The document declares atomic requirements, observable acceptance criteria, the verification seam, test oracle and evidence expectation per AC-01-AC-14 under ADR-060, and marks unexecuted behavior (Not executed / Partial) so it cannot be claimed complete. Named oracle tests per sub-spec §4 (test_dataset_validation_persists_valid_source, test_invalid_dataset_does_not_change_inventory, test_risk_evaluation_creates_prediction_and_critical_alert) ran and passed (3 passed). Parent Spec #2 readiness is asserted in the sub-spec but not evidenced in this diff (pending verification). Acceptance criteria are NOT fully met: 9 criteria Partial, 11 Not executed (only AC-03/07/09 Executed); acceptanceCriteriaMet set to false. gate-ci remains deferred to publish-open-pr; implement does not push or open PRs."
   },
   "commitSha": "7a834d673f5de3a6d4f1d74eadf6228bda32f3ba",
   "branch": "feat/issue-7-governance-evidence-baseline-provenance",
